@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace EFGetStarted
+namespace SpartaProjectDB
 {
-    public class BloggingContext : DbContext
+    public class ProjectContext : DbContext
     {
         public DbSet<Seller> Sellers { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=SpartaProject;");
