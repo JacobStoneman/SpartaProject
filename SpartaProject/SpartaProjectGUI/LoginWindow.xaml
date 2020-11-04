@@ -1,12 +1,13 @@
-﻿<Window x:Class="SpartaProjectGUI.MainWindow"
+﻿<Window x:Class="SpartaProjectGUI.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpartaProjectGUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="" Height="450" Width="800">
+	<Grid>
+		<Button x:Name="button" Content="Button" HorizontalAlignment="Center" VerticalAlignment="Center" Height="54" Width="109" Click="button_Click"/>
 
-    </Grid>
+	</Grid>
 </Window>
