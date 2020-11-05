@@ -15,17 +15,27 @@ namespace SpartaProjectDB
             => options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=SpartaProject;");
     }
 
+    public class User
+	{
+        public int UserId { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
+        public int AccountType { get; set; }
+	}
+
     public class Seller
 	{
         public int SellerId { get; set; }
-        public string Name { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; } 
 
 	}
 
     public class Customer
 	{
         public int CustomerId { get; set; }
-        public string Name { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
         public List<Order> Orders { get; set; }
 	}
 

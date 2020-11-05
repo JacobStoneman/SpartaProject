@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpartaProjectBusiness;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,15 +18,30 @@ namespace SpartaProjectGUI
 {
 	public partial class LoginWindow : Window
 	{
+		CRUDManagerSeller crudSeller = new CRUDManagerSeller();
+		CRUDManagerCustomer crudCustomer = new CRUDManagerCustomer();
+
 		public LoginWindow()
 		{
 			InitializeComponent();
 		}
 
-		private void button_Click(object sender, RoutedEventArgs e)
+		private void button_configure_user_Click(object sender, RoutedEventArgs e)
+		{
+			AccountConfig config = new AccountConfig(crudSeller,crudCustomer);
+			config.Closed += AccountConfigClosed;
+			config.ShowDialog();
+		}
+		private void AccountConfigClosed(object sender, EventArgs e)
+		{
+
+		}
+
+		private void button_login_Click(object sender, RoutedEventArgs e)
 		{
 			CustomerWindow win = new CustomerWindow();
 			Content = win;
 		}
+
 	}
 }

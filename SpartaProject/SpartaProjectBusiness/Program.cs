@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpartaProjectDB;
+using System;
 
 namespace SpartaProjectBusiness
 {
@@ -6,7 +7,6 @@ namespace SpartaProjectBusiness
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
 		}
 	}
 }

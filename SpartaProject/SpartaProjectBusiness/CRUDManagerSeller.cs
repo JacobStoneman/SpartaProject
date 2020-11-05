@@ -6,56 +6,58 @@ using System.Text;
 
 namespace SpartaProjectBusiness
 {
-	class CRUDManagerSeller
+	public class CRUDManagerSeller : CRUDManager
 	{
-		public Seller SelectedSeller { get; set; }
+		public Seller Selected { get; set; }
 
-		public void SetSelected(object selectedItem)
-		{
-			SelectedSeller = (Seller)selectedItem;
-		}
+		//public T SetSelected<T>(object selectedItem)
+		//{
+		//	SelectedSeller = (T)selectedItem;
+		//	return selectedSeller;
+		//}
 
-		public Seller Create(string name)
-		{
-			using (ProjectContext db = new ProjectContext())
-			{
-				Seller newSeller = new Seller()
-				{
-					Name = name
-				};
+		//public List<Seller> RetrieveAll()
+		//{
+		//	using (ProjectContext db = new ProjectContext())
+		//	{
+		//		return db.Sellers.ToList();
+		//	}
+		//}
 
-				db.Sellers.Add(newSeller);
+		//public Seller Create(string name)
+		//{
+		//	using (ProjectContext db = new ProjectContext())
+		//	{
+		//		Seller newSeller = new Seller()
+		//		{
+		//			Name = name
+		//		};
 
-				db.SaveChanges();
-				return newSeller;
-			}
-		}
+		//		db.Sellers.Add(newSeller);
 
-		public List<Seller> RetrieveAll()
-		{
-			using (ProjectContext db = new ProjectContext())
-			{
-				return db.Sellers.ToList();
-			}
-		}
+		//		db.SaveChanges();
+		//		return newSeller;
+		//	}
+		//}
 
-		public void Update(int id, string name)
-		{
-			using (ProjectContext db = new ProjectContext())
-			{
-				SelectedSeller = db.Sellers.Where(s => s.SellerId == id).FirstOrDefault();
-				SelectedSeller.Name = name;
-				db.SaveChanges();
-			}
-		}
+
+		//public void Update(int id, string name)
+		//{
+		//	using (ProjectContext db = new ProjectContext())
+		//	{
+		//		Selected = db.Sellers.Where(s => s.SellerId == id).FirstOrDefault();
+		//		Selected.Name = name;
+		//		db.SaveChanges();
+		//	}
+		//}
 
 		//TODO: Needs to remove links to other tables
 		public void Delete(int id)
 		{
 			using (ProjectContext db = new ProjectContext())
 			{
-				SelectedSeller = db.Sellers.Where(s => s.SellerId == id).FirstOrDefault();
-				db.Sellers.Remove(SelectedSeller);
+				Selected = db.Sellers.Where(s => s.SellerId == id).FirstOrDefault();
+				db.Sellers.Remove(Selected);
 				db.SaveChanges();
 			}
 		}
