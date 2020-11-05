@@ -30,7 +30,7 @@
 		<TextBlock x:Name="textBlock_password" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" Text="Password" TextWrapping="Wrap" VerticalAlignment="Stretch"/>
 		
 		<ComboBox x:Name="comboBox_username" Grid.Column="2" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="comboBox_username_Selected"/>
-		<TextBox x:Name="textBox_password" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch"/>
+		<PasswordBox x:Name="textBox_password" Grid.Column="2" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" PasswordChar="*"/>
 
 	</Grid>
 </Window>

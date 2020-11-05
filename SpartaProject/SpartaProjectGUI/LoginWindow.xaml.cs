@@ -1,4 +1,5 @@
 ﻿using SpartaProjectBusiness;
+using SpartaProjectGUI.Pages;
 using SpartaProjectDB;
 using System;
 using System.Collections.Generic;
@@ -61,16 +62,30 @@ namespace SpartaProjectGUI
 
 		private void button_login_Click(object sender, RoutedEventArgs e)
 		{
-			if(textBox_password.Text == crudUser.Selected.Password)
+			if (crudUser.Selected != null)
 			{
-				MessageBox.Show("Password Correct");
+				if (textBox_password.Password == crudUser.Selected.Password)
+				{
+					if (crudUser.Selected.AccountType == 0)
+					{
+						SellerPage win = new SellerPage();
+						Content = win;
+					}
+					else
+					{
+						CustomerPage win = new CustomerPage();
+						Content = win;
+					}
+				}
+				else
+				{
+					MessageBox.Show("Password Incorrect");
+				}
 			} else
 			{
-				MessageBox.Show("Password Incorrect");
+				MessageBox.Show("Please enter a username and password");
 			}
 
-			//CustomerWindow win = new CustomerWindow();
-			//Content = win;
 		}
 
 		private void comboBox_username_Selected(object sender, RoutedEventArgs e)

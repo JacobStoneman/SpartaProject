@@ -14,11 +14,11 @@ using System.Windows.Shapes;
 namespace SpartaProjectGUI
 {
 	/// <summary>
-	/// Interaction logic for CustomerWindow.xaml
+	/// Interaction logic for SellerPage.xaml
 	/// </summary>
-	public partial class CustomerWindow : Page
+	public partial class SellerPage : Page
 	{
-		public CustomerWindow()
+		public SellerPage()
 		{
 			InitializeComponent();
 		}

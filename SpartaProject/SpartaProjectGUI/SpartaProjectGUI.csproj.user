@@ -10,7 +10,10 @@
     <Compile Update="AccountConfig.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Update="CustomerWindow.xaml.cs">
+    <Compile Update="Pages\CustomerPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\SellerPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -18,10 +21,13 @@
     <Page Update="AccountConfig.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="CustomerWindow.xaml">
+    <Page Update="LoginWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
-    <Page Update="LoginWindow.xaml">
+    <Page Update="Pages\CustomerPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\SellerPage.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
