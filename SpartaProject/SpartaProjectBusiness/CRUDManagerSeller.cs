@@ -1,8 +1,5 @@
 ﻿using SpartaProjectDB;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace SpartaProjectBusiness
 {
@@ -10,49 +7,24 @@ namespace SpartaProjectBusiness
 	{
 		public Seller Selected { get; set; }
 
-		//public T SetSelected<T>(object selectedItem)
-		//{
-		//	SelectedSeller = (T)selectedItem;
-		//	return selectedSeller;
-		//}
+		public Seller Create(User user)
+		{
+			using (ProjectContext db = new ProjectContext())
+			{
+				Seller newSeller = new Seller()
+				{
+					User = user,
+					UserId = user.UserId
+				};
 
-		//public List<Seller> RetrieveAll()
-		//{
-		//	using (ProjectContext db = new ProjectContext())
-		//	{
-		//		return db.Sellers.ToList();
-		//	}
-		//}
+				db.Sellers.Add(newSeller);
 
-		//public Seller Create(string name)
-		//{
-		//	using (ProjectContext db = new ProjectContext())
-		//	{
-		//		Seller newSeller = new Seller()
-		//		{
-		//			Name = name
-		//		};
+				db.SaveChanges();
+				return newSeller;
+			}
+		}
 
-		//		db.Sellers.Add(newSeller);
-
-		//		db.SaveChanges();
-		//		return newSeller;
-		//	}
-		//}
-
-
-		//public void Update(int id, string name)
-		//{
-		//	using (ProjectContext db = new ProjectContext())
-		//	{
-		//		Selected = db.Sellers.Where(s => s.SellerId == id).FirstOrDefault();
-		//		Selected.Name = name;
-		//		db.SaveChanges();
-		//	}
-		//}
-
-		//TODO: Needs to remove links to other tables
-		public void Delete(int id)
+		public void Delete(int? id)
 		{
 			using (ProjectContext db = new ProjectContext())
 			{

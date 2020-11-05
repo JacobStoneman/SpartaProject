@@ -22,6 +22,11 @@ namespace SpartaProjectDB
         public string Name { get; set; }
         public string Password { get; set; }
         public int AccountType { get; set; }
+
+		public override string ToString()
+		{
+			return Name;
+		}
 	}
 
     public class Seller

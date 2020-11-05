@@ -6,7 +6,6 @@ namespace SpartaProjectModel
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello World!");
 		}
 	}
 }

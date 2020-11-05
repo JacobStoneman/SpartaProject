@@ -6,9 +6,9 @@
       xmlns:local="clr-namespace:SpartaProjectGUI"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="CustomerWindow" Height="450" Width="800">
+      Title="CustomerWindow" Height="450" Width="800" Background="White">
 
 	<Grid>
-		<TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="108,95,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="99"/>
+		<TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="108,95,0,0" Text="Customer Page" TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="99"/>
 	</Grid>
 </Page>

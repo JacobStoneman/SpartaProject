@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SpartaProjectGUI"
         mc:Ignorable="d"
-        Title="AccountConfig" Height="250" Width="400">
+        Title="AccountConfig" Height="300" Width="400">
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition/>
@@ -21,16 +21,19 @@
 				<RowDefinition/>
 				<RowDefinition/>
 				<RowDefinition/>
+				<RowDefinition/>
 			</Grid.RowDefinitions>
 
 			<TextBlock x:Name="textBlock_userID" HorizontalAlignment="Stretch" Text="User ID:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20"/>
 			<TextBlock x:Name="textBlock_name" HorizontalAlignment="Stretch" Text="Name:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Grid.Row="1"/>
-			<TextBlock x:Name="textBlock_accountType" HorizontalAlignment="Stretch" Text="Account Type:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Grid.Row="2"/>
+			<TextBlock x:Name="textBlock_password" HorizontalAlignment="Stretch" Text="Password:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Grid.Row="2"/>
+			<TextBlock x:Name="textBlock_accountType" HorizontalAlignment="Stretch" Text="Account Type:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Grid.Row="3"/>
 
 			<TextBlock x:Name="textBlock_userID_value" HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Grid.Column="1"/>
 			<TextBox x:Name="textBox_name_value" HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Grid.Column="1" Grid.Row="1"/>
-			<RadioButton x:Name="radioButton_customer" Content="Customer" Grid.Column="1" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="2" VerticalAlignment="Top"/>
-			<RadioButton x:Name="radioButton_seller" Content="Seller" Grid.Column="1" HorizontalAlignment="Left" Margin="5,25,0,0" Grid.Row="2" VerticalAlignment="Top"/>
+			<TextBox x:Name="textBox_password_value" HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Grid.Column="1" Grid.Row="2"/>
+			<RadioButton x:Name="radioButton_customer" Content="Customer" Grid.Column="1" HorizontalAlignment="Left" Margin="5,5,0,0" Grid.Row="3" VerticalAlignment="Top"/>
+			<RadioButton x:Name="radioButton_seller" Content="Seller" Grid.Column="1" HorizontalAlignment="Left" Margin="5,25,0,0" Grid.Row="4" VerticalAlignment="Top"/>
 
 		</Grid>
 
@@ -42,8 +45,8 @@
 			</Grid.ColumnDefinitions>
 
 			<Button x:Name="button_add" Content="Add As New" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button_add_Click"/>
-			<Button x:Name="button_update" Content="Update Selected User" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1"/>
-			<Button x:Name="button_delete" Content="Delete User" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2"/>
+			<Button x:Name="button_update" Content="Update Selected User" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Click="button_update_Click"/>
+			<Button x:Name="button_delete" Content="Delete User" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Click="button_delete_Click"/>
 
 
 		</Grid>

@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="SpartaProjectDB.ProjectContext">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAACAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>ProjectContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpartaProjectDB.User">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAwAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>ProjectContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpartaProjectDB.Seller">
+    <Position X="4.25" Y="5.25" Width="1.5" />
+    <AssociationLine Name="User" Type="SpartaProjectDB.User" ManuallyRouted="true" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="5.625" />
+        <Point X="5.75" Y="5.47" />
+        <Point X="8.562" Y="5.47" />
+        <Point X="8.562" Y="4.18" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAgAAAAAAQAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProjectContext.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="SpartaProjectDB.Customer">
+    <Position X="4.25" Y="3.75" Width="1.5" />
+    <AssociationLine Name="User" Type="SpartaProjectDB.User" FixedFromPoint="true" FixedToPoint="true">
+      <Path>
+        <Point X="5.75" Y="4.625" />
+        <Point X="7.688" Y="4.625" />
+        <Point X="7.688" Y="4.18" />
+      </Path>
+    </AssociationLine>
+    <TypeIdentifier>
+      <HashCode>AAEBAAAAAAAAAAAAAAAAAAgAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>ProjectContext.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="User" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="Orders" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="SpartaProjectDB.Product">
+    <Position X="7.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAA=</HashCode>
+      <FileName>ProjectContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpartaProjectDB.Order">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GAECAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAA=</HashCode>
+      <FileName>ProjectContext.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Product" />
+      <Property Name="Customer" />
+    </ShowAsAssociation>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

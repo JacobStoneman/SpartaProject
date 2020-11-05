@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SpartaProjectBusiness
 {
-	class CRUDManagerOrder
+	class CRUDManagerOrder : CRUDManager
 	{
 	}
 }
