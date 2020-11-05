@@ -6,6 +6,7 @@ namespace SpartaProjectDB
 {
     public class ProjectContext : DbContext
     {
+        public DbSet<User> Users { get; set; }
         public DbSet<Seller> Sellers { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Product> Products { get; set; }
