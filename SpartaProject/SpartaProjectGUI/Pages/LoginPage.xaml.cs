@@ -63,8 +63,7 @@ namespace SpartaProjectGUI.Pages
 					}
 					else
 					{
-						CustomerPage win = new CustomerPage();
-						Content = win;
+						Window.Navigate(new CustomerPage(crudUser));
 					}
 				}
 				else

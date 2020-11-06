@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SpartaProjectBusiness;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -18,8 +19,10 @@ namespace SpartaProjectGUI.Pages
 	/// </summary>
 	public partial class CustomerPage : Page
 	{
-		public CustomerPage()
+		CRUDManagerUser CrudUser;
+		public CustomerPage(CRUDManagerUser crudUser)
 		{
+			CrudUser = crudUser;
 			InitializeComponent();
 		}
 	}

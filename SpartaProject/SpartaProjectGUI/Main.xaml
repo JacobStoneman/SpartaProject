@@ -17,7 +17,7 @@
 			<Button x:Name="button_logout" Content="Logout" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="87" Click="button_logout_Click"/>
 
 			<DockPanel Grid.Row="1">
-				<Frame x:Name="main" NavigationUIVisibility="Hidden"/>
+				<Frame x:Name="main" NavigationUIVisibility="Hidden" Navigated="main_Navigated"/>
 			</DockPanel>
 		</Grid>
 	</Grid>
