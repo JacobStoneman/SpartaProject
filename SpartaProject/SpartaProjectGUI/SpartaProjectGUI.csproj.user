@@ -10,7 +10,13 @@
     <Compile Update="AccountConfig.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Main.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Pages\CustomerPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Pages\LoginPage.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Pages\SellerPage.xaml.cs">
@@ -24,7 +30,13 @@
     <Page Update="LoginWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Main.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Pages\CustomerPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Pages\LoginPage.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Pages\SellerPage.xaml">

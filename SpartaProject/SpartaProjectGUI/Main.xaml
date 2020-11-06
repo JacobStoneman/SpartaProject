@@ -1,0 +1,24 @@
+﻿<Window x:Class="SpartaProjectGUI.Main"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SpartaProjectGUI"
+        mc:Ignorable="d"
+        Title="Main" Height="450" Width="800">
+    <Grid>
+		<Grid>
+			<Grid.RowDefinitions>
+				<RowDefinition MinHeight="30" MaxHeight="30"/>
+				<RowDefinition/>
+			</Grid.RowDefinitions>
+
+			<TextBlock x:Name="textBlock_user_info" HorizontalAlignment="Left" Text="Logged in as:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="15"/>
+			<Button x:Name="button_logout" Content="Logout" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="87" Click="button_logout_Click"/>
+
+			<DockPanel Grid.Row="1">
+				<Frame x:Name="main" NavigationUIVisibility="Hidden"/>
+			</DockPanel>
+		</Grid>
+	</Grid>
+</Window>

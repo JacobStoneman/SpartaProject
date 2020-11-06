@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NETCOREAPP;NETCOREAPP3_1
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectGUI\App.xaml
-41229753336
+62072062809
 
-81205781091
+10-738427833
 219-1844662970
-AccountConfig.xaml;LoginWindow.xaml;Pages\CustomerPage.xaml;Pages\SellerPage.xaml;
+AccountConfig.xaml;LoginWindow.xaml;Main.xaml;Pages\CustomerPage.xaml;Pages\LoginPage.xaml;Pages\SellerPage.xaml;
 
-True
+False
 

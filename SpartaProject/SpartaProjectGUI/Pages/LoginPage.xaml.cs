@@ -16,35 +16,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SpartaProjectGUI
+namespace SpartaProjectGUI.Pages
 {
-	public partial class LoginWindow : Window
+	public partial class LoginPage : Page
 	{
-		CRUDManagerSeller crudSeller = new CRUDManagerSeller();
-		CRUDManagerCustomer crudCustomer = new CRUDManagerCustomer();
 		CRUDManagerUser crudUser = new CRUDManagerUser();
 
-		public LoginWindow()
+		Frame Window;
+
+		public LoginPage(Frame window)
 		{
 			InitializeComponent();
-
-
-			//using (ProjectContext db = new ProjectContext())
-			//{
-			//	foreach(var user in db.Users)
-			//	{
-			//		db.Users.Remove(user);
-			//	}
-			//	db.SaveChanges();
-			//}
+			Window = window;
 
 			PopulateUserBox();
 		}
 
 		private void PopulateUserBox()
 		{
-			using (ProjectContext db = new ProjectContext()) 
-			{	
+			using (ProjectContext db = new ProjectContext())
+			{
 				comboBox_username.ItemsSource = crudUser.RetrieveAll(db.Users);
 			}
 		}
@@ -68,7 +59,7 @@ namespace SpartaProjectGUI
 				{
 					if (crudUser.Selected.AccountType == 0)
 					{
-						//main.Navigate(new SellerPage(crudUser));
+						Window.Navigate(new SellerPage(crudUser));
 					}
 					else
 					{
@@ -80,7 +71,8 @@ namespace SpartaProjectGUI
 				{
 					MessageBox.Show("Password Incorrect");
 				}
-			} else
+			}
+			else
 			{
 				MessageBox.Show("Please enter a username and password");
 			}

@@ -1,7 +1,11 @@
 ﻿using SpartaProjectBusiness;
+using SpartaProjectGUI.Pages;
+using SpartaProjectDB;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -15,22 +19,24 @@ using System.Windows.Shapes;
 namespace SpartaProjectGUI
 {
 	/// <summary>
-	/// Interaction logic for SellerPage.xaml
+	/// Interaction logic for Main.xaml
 	/// </summary>
-	public partial class SellerPage : Page
+	public partial class Main : Window
 	{
-		CRUDManagerUser CrudUser = new CRUDManagerUser();
-		public SellerPage(CRUDManagerUser crudUser)
+		public Main()
 		{
-			CrudUser = crudUser;
 			InitializeComponent();
+			ReturnToLogin();
+		}
+
+		private void ReturnToLogin()
+		{
+			main.Navigate(new LoginPage(main));
 		}
 
 		private void button_logout_Click(object sender, RoutedEventArgs e)
 		{
-			LoginWindow win = new LoginWindow();
-			Content = win;
-			CrudUser.Selected = null;
+			ReturnToLogin();
 		}
 	}
 }

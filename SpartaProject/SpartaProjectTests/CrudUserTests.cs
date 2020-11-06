@@ -155,6 +155,5 @@ namespace SpartaProjectTests
 				CollectionAssert.DoesNotContain(db.Sellers, newSellerSelected);
 			}
 		}
-
 	}
 }

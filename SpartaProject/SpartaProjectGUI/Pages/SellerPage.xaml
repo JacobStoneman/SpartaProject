@@ -9,6 +9,29 @@
       Title="SellerPage" Background="White">
 
 	<Grid>
-		<TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="371,35,0,0" Text="Seller Page" TextWrapping="Wrap" VerticalAlignment="Top"/>
+		<TabControl x:Name="tabControl">
+			<TabItem Header="Products">
+				<Grid Background="#FFE5E5E5">
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition MinWidth="100" MaxWidth="120"/>
+						<ColumnDefinition/>
+						<ColumnDefinition/>
+					</Grid.ColumnDefinitions>
+
+					<Grid Grid.Column="0">
+						<Grid.RowDefinitions>
+							<RowDefinition/>
+							<RowDefinition/>
+							<RowDefinition/>
+						</Grid.RowDefinitions>
+					</Grid>
+
+				</Grid>
+			</TabItem>
+			<TabItem Header="Orders">
+				<Grid Background="#FFE5E5E5"/>
+			</TabItem>
+		</TabControl>
+
 	</Grid>
 </Page>
