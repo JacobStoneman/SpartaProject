@@ -25,12 +25,5 @@ namespace SpartaProjectGUI
 			CrudUser = crudUser;
 			InitializeComponent();
 		}
-
-		private void button_logout_Click(object sender, RoutedEventArgs e)
-		{
-			LoginWindow win = new LoginWindow();
-			Content = win;
-			CrudUser.Selected = null;
-		}
 	}
 }
