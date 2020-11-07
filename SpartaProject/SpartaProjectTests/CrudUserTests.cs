@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace SpartaProjectTests
 {
-	public class CrudUserTests
+	public class CRUDUserTests
 	{
 		CRUDManagerUser _crud = new CRUDManagerUser();
 
@@ -110,7 +110,7 @@ namespace SpartaProjectTests
 
 				User newUserSelected = db.Users.Where(u => u.UserId == testUser.UserId).FirstOrDefault();
 
-				CollectionAssert.DoesNotContain(db.Customers, newUserSelected);
+				CollectionAssert.DoesNotContain(db.Users, newUserSelected);
 			}
 		}
 
