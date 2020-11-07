@@ -20,12 +20,13 @@ namespace SpartaProjectGUI.Pages
 {
 	public partial class LoginPage : Page
 	{
-		CRUDManagerUser crudUser = new CRUDManagerUser();
+		CRUDManagerUser CrudUser;
 
 		Frame Window;
 
-		public LoginPage(Frame window)
+		public LoginPage(Frame window, CRUDManagerUser crudUser)
 		{
+			CrudUser = crudUser;
 			InitializeComponent();
 			Window = window;
 
@@ -36,13 +37,13 @@ namespace SpartaProjectGUI.Pages
 		{
 			using (ProjectContext db = new ProjectContext())
 			{
-				comboBox_username.ItemsSource = crudUser.RetrieveAll(db.Users);
+				comboBox_username.ItemsSource = CrudUser.RetrieveAll(db.Users);
 			}
 		}
 
 		private void button_configure_user_Click(object sender, RoutedEventArgs e)
 		{
-			AccountConfig config = new AccountConfig(crudUser);
+			AccountConfig config = new AccountConfig(CrudUser);
 			config.Closed += AccountConfigClosed;
 			config.ShowDialog();
 		}
@@ -53,17 +54,17 @@ namespace SpartaProjectGUI.Pages
 
 		private void button_login_Click(object sender, RoutedEventArgs e)
 		{
-			if (crudUser.Selected != null)
+			if (CrudUser.Selected != null)
 			{
-				if (textBox_password.Password == crudUser.Selected.Password)
+				if (textBox_password.Password == CrudUser.Selected.Password)
 				{
-					if (crudUser.Selected.AccountType == 0)
+					if (CrudUser.Selected.AccountType == 0)
 					{
-						Window.Navigate(new SellerPage(crudUser));
+						Window.Navigate(new SellerPage(CrudUser));
 					}
 					else
 					{
-						Window.Navigate(new CustomerPage(crudUser));
+						Window.Navigate(new CustomerPage(CrudUser));
 					}
 				}
 				else
@@ -80,7 +81,7 @@ namespace SpartaProjectGUI.Pages
 
 		private void comboBox_username_Selected(object sender, RoutedEventArgs e)
 		{
-			crudUser.Selected = crudUser.SetSelected<User>(comboBox_username.SelectedItem);
+			CrudUser.Selected = CrudUser.SetSelected<User>(comboBox_username.SelectedItem);
 		}
 	}
 }

@@ -23,6 +23,7 @@ namespace SpartaProjectGUI
 	/// </summary>
 	public partial class Main : Window
 	{
+		CRUDManagerUser CrudUser = new CRUDManagerUser();
 		public Main()
 		{
 			InitializeComponent();
@@ -31,7 +32,8 @@ namespace SpartaProjectGUI
 
 		public void ReturnToLogin()
 		{
-			main.Navigate(new LoginPage(main));
+			main.Navigate(new LoginPage(main, CrudUser));
+			CrudUser.Selected = null;
 		}
 
 		public void SetTopBarEnabled(bool enabled)
@@ -41,6 +43,7 @@ namespace SpartaProjectGUI
 			if (enabled)
 			{
 				textBlock_user_info.Visibility = Visibility.Visible;
+				textBlock_user_info.Text = $"Logged in as: {CrudUser.Selected}";
 				button_logout.Visibility = Visibility.Visible;
 			} else
 			{

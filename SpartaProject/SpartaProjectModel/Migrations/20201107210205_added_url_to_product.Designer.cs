@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SpartaProjectDB;
 
 namespace SpartaProjectModel.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    partial class BloggingContextModelSnapshot : ModelSnapshot
+    [Migration("20201107210205_added_url_to_product")]
+    partial class added_url_to_product
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -77,7 +79,7 @@ namespace SpartaProjectModel.Migrations
                     b.Property<string>("ProductName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Url")
+                    b.Property<string>("url")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ProductId");

@@ -19,11 +19,24 @@ namespace SpartaProjectGUI
 	/// </summary>
 	public partial class SellerPage : Page
 	{
-		CRUDManagerUser CrudUser = new CRUDManagerUser();
+		CRUDManagerUser CrudUser;
+		CRUDManagerProduct CrudProduct = new CRUDManagerProduct();
 		public SellerPage(CRUDManagerUser crudUser)
 		{
 			CrudUser = crudUser;
 			InitializeComponent();
+		}
+
+		private void button_configure_product_Click(object sender, RoutedEventArgs e)
+		{
+			ProductConfig config = new ProductConfig(CrudProduct);
+			config.Closed += ProductConfigClosed;
+			config.ShowDialog();
+		}
+
+		private void ProductConfigClosed(object sender, EventArgs e)
+		{
+
 		}
 	}
 }
