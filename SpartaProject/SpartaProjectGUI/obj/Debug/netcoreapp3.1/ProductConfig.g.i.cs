@@ -141,7 +141,7 @@ namespace SpartaProjectGUI {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SpartaProjectGUI;component/productconfig.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SpartaProjectGUI;V1.0.0.0;component/productconfig.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\ProductConfig.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
