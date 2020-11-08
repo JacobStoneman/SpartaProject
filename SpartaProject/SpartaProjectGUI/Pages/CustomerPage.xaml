@@ -8,8 +8,19 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="CustomerPage" Background="White">
 
-    <Grid>
-		<TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="361,47,0,0" Text="Customer Page" TextWrapping="Wrap" VerticalAlignment="Top"/>
+	<Grid>
+		<TabControl x:Name="tabControl">
+			<TabItem Header="Products">
+
+				<DockPanel>
+					<Frame x:Name="customer_product_frame" NavigationUIVisibility="Hidden"/>
+				</DockPanel>
+
+			</TabItem>
+			<TabItem Header="Orders">
+				<Grid Background="#FFE5E5E5"/>
+			</TabItem>
+		</TabControl>
 
 	</Grid>
 </Page>

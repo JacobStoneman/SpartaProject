@@ -19,11 +19,10 @@ namespace SpartaProjectGUI.Pages
 	/// </summary>
 	public partial class CustomerPage : Page
 	{
-		CRUDManagerUser CrudUser;
 		public CustomerPage(CRUDManagerUser crudUser)
 		{
-			CrudUser = crudUser;
 			InitializeComponent();
+			customer_product_frame.Navigate(new ProductPage(crudUser));
 		}
 	}
 }
