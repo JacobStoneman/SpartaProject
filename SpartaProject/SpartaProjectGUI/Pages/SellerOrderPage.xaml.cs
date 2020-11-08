@@ -16,19 +16,26 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SpartaProjectGUI
+namespace SpartaProjectGUI.Pages
 {
 	/// <summary>
-	/// Interaction logic for SellerPage.xaml
+	/// Interaction logic for SellerOrderPage.xaml
 	/// </summary>
-	public partial class SellerPage : Page
+	public partial class SellerOrderPage : Page
 	{
-		public SellerPage(CRUDManagerUser crudUser)
+		CRUDManagerOrder CrudOrder = new CRUDManagerOrder();
+		public SellerOrderPage()
 		{
 			InitializeComponent();
-			seller_product_frame.Navigate(new ProductPage(crudUser));
-			seller_order_frame.Navigate(new SellerOrderPage());
+			PopulateNewOrders();
 		}
 
+		private void PopulateNewOrders()
+		{
+			using (ProjectContext db = new ProjectContext())
+			{
+				listBox_newOrders.ItemsSource = CrudOrder.RetrieveAll(db.Orders);
+			}
+		}
 	}
 }

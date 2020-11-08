@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 
 namespace SpartaProjectDB
 {
@@ -67,5 +68,14 @@ namespace SpartaProjectDB
         public Product Product { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime ShipDate { get; set; }
+
+		public override string ToString()
+		{
+            using (ProjectContext db = new ProjectContext())
+            {
+                Product prod = db.Products.Where(p => p.ProductId == ProductId).FirstOrDefault();
+                return $"Order: {OrderId} - {prod.Name} - Ship Date: {ShipDate.Year}/{ShipDate.Month}/{ShipDate.Day}";
+            }
+		}
 	}
 }

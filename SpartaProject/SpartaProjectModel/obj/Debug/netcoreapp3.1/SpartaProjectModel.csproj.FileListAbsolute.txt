@@ -52,3 +52,4 @@ C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectModel\obj\
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectModel\obj\Debug\netcoreapp3.1\SpartaProjectModel.dll
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectModel\obj\Debug\netcoreapp3.1\SpartaProjectModel.pdb
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectModel\obj\Debug\netcoreapp3.1\SpartaProjectModel.genruntimeconfig.cache
+C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectModel\obj\Debug\netcoreapp3.1\SpartaProjectModel.csprojAssemblyReference.cache
