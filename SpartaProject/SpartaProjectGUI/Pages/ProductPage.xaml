@@ -30,7 +30,7 @@
 			</ScrollViewer>
 			
 			<Button x:Name="button_configure_product" Grid.Row="3" Content="Configure Products" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button_configure_product_Click"/>
-			<Button x:Name="button_order_product" Grid.Row="3" Content="Order Products" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+			<Button x:Name="button_order_product" Grid.Row="3" Content="Order Selected Product" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button_order_product_Click"/>
 		</Grid>
 
 		<Grid Grid.Column="1">

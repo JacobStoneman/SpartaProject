@@ -26,6 +26,7 @@ namespace SpartaProjectGUI.Pages
 		const string defaultImage = "https://www.tibs.org.tw/images/default.jpg";
 		CRUDManagerUser CrudUser;
 		CRUDManagerProduct CrudProduct = new CRUDManagerProduct();
+		CRUDManagerOrder CrudOrder = new CRUDManagerOrder();
 		public ProductPage(CRUDManagerUser crudUser)
 		{
 			CrudUser = crudUser;
@@ -133,6 +134,23 @@ namespace SpartaProjectGUI.Pages
 		private void textBox_product_search_TextChanged(object sender, TextChangedEventArgs e)
 		{
 			PopulateProductList();
+		}
+
+		private void button_order_product_Click(object sender, RoutedEventArgs e)
+		{
+			if (CrudProduct.Selected == null)
+			{
+				MessageBox.Show("Please select a product");
+			}
+			else
+			{
+				using (ProjectContext db = new ProjectContext())
+				{
+					Customer currentCustomer = db.Customers.Where(c => c.UserId == CrudUser.Selected.UserId).FirstOrDefault();
+					CrudOrder.Create(CrudProduct.Selected, currentCustomer);
+				}
+				MessageBox.Show("Order Placed");
+			}
 		}
 	}
 }
