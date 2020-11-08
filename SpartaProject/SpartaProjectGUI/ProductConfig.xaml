@@ -44,9 +44,9 @@
 				<ColumnDefinition/>
 			</Grid.ColumnDefinitions>
 
-			<Button x:Name="button_add" Content="Add As New" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
-			<Button x:Name="button_update" Content="Update Selected Product" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" />
-			<Button x:Name="button_delete" Content="Delete Product" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" />
+			<Button x:Name="button_add" Content="Add As New" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button_add_Click" />
+			<Button x:Name="button_update" Content="Update Selected Product" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="1" Click="button_update_Click"/>
+			<Button x:Name="button_delete" Content="Delete Product" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="2" Click="button_delete_Click" />
 
 
 		</Grid>

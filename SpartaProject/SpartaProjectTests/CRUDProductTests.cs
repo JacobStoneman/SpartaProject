@@ -16,7 +16,7 @@ namespace SpartaProjectTests
 			{
 				var selectedProducts =
 					from p in db.Products
-					where p.ProductName == "testProduct"
+					where p.Name == "testProduct"
 					select p;
 
 				db.Products.RemoveRange(selectedProducts);
@@ -32,7 +32,7 @@ namespace SpartaProjectTests
 			{
 				var selectedProducts =
 					from p in db.Products
-					where p.ProductName == "testProduct"
+					where p.Name == "testProduct"
 					select p;
 
 				db.Products.RemoveRange(selectedProducts);
@@ -59,8 +59,8 @@ namespace SpartaProjectTests
 			using (var db = new ProjectContext())
 			{
 				_crud.Create("testProduct", 1, "url");
-				Product newProductSelected = db.Products.Where(p => p.ProductName == "testProduct").FirstOrDefault();
-				Assert.AreEqual("testProduct", newProductSelected.ProductName);
+				Product newProductSelected = db.Products.Where(p => p.Name == "testProduct").FirstOrDefault();
+				Assert.AreEqual("testProduct", newProductSelected.Name);
 				Assert.AreEqual(1, newProductSelected.Price);
 				Assert.AreEqual("url", newProductSelected.Url);
 			}
@@ -73,7 +73,7 @@ namespace SpartaProjectTests
 			{
 				Product testProduct = new Product
 				{
-					ProductName = "change",
+					Name = "change",
 					Url = "change",
 					Price = 0
 				};
@@ -85,9 +85,9 @@ namespace SpartaProjectTests
 				var selectUpdated =
 					from p in db.Products
 					where p.ProductId == testProduct.ProductId
-					select new { p.ProductName, p.Price, p.Url };
+					select new { p.Name, p.Price, p.Url };
 
-				string newName = selectUpdated.FirstOrDefault().ProductName;
+				string newName = selectUpdated.FirstOrDefault().Name;
 				string newUrl = selectUpdated.FirstOrDefault().Url;
 				decimal newPrice = selectUpdated.FirstOrDefault().Price;
 
@@ -104,7 +104,7 @@ namespace SpartaProjectTests
 			{
 				Product testProduct = new Product
 				{
-					ProductName = "testProduct"
+					Name = "testProduct"
 				};
 				db.Products.Add(testProduct);
 				db.SaveChanges();

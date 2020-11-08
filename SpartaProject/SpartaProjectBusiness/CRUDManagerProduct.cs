@@ -17,7 +17,7 @@ namespace SpartaProjectBusiness
 			{
 				Product newProduct = new Product()
 				{
-					ProductName = name,
+					Name = name,
 					Price = price,
 					Url = url
 				};
@@ -34,7 +34,7 @@ namespace SpartaProjectBusiness
 			using (ProjectContext db = new ProjectContext())
 			{
 				Selected = db.Products.Where(p => p.ProductId == productId).FirstOrDefault();
-				Selected.ProductName = name;
+				Selected.Name = name;
 				Selected.Price = price;
 				Selected.Url = url;
 				db.SaveChanges();

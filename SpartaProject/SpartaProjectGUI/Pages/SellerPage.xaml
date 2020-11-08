@@ -29,7 +29,7 @@
 						<TextBox x:Name="textBox_product_search" Grid.Row="0" HorizontalAlignment="Stretch" Text="" TextWrapping="Wrap" VerticalAlignment="Stretch"/>
 						<ComboBox x:Name="comboBox_product_sort" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
 						<ScrollViewer Grid.Row="2">
-							<ListBox x:Name="listBox_product"/>
+							<ListBox x:Name="listBox_product" SelectionChanged="listBox_product_SelectionChanged"/>
 						</ScrollViewer>
 						<Button x:Name="button_configure_product" Grid.Row="3" Content="Configure Products" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button_configure_product_Click"/>
 					</Grid>
@@ -54,13 +54,13 @@
 								<RowDefinition/>
 							</Grid.RowDefinitions>
 							
-							<TextBlock x:Name="textBlock_product_name" HorizontalAlignment="Stretch" Text="Name:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
-							<TextBlock x:Name="textBlock_product_id" Grid.Row="1" HorizontalAlignment="Stretch" Text="ID:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
+							<TextBlock x:Name="textBlock_product_id" Grid.Row="0" HorizontalAlignment="Stretch" Text="Product ID:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
+							<TextBlock x:Name="textBlock_product_name" Grid.Row="1" HorizontalAlignment="Stretch" Text="Name:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
 							<TextBlock x:Name="textBlock_product_price" Grid.Row="2" HorizontalAlignment="Stretch" Text="Price:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
 							<TextBlock x:Name="textBlock_product_rating" Grid.Row="3" HorizontalAlignment="Stretch" Text="-" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
 
-							<TextBlock x:Name="textBlock_product_name_value" Grid.Column="1" HorizontalAlignment="Stretch" Text="-" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
-							<TextBlock x:Name="textBlock_product_id_value" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Text="-" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
+							<TextBlock x:Name="textBlock_product_id_value" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Text="-" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
+							<TextBlock x:Name="textBlock_product_name_value" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Text="-" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
 							<TextBlock x:Name="textBlock_product_price_value" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Stretch" Text="-" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
 							<TextBlock x:Name="textBlock_product_rating_value" Grid.Row="3" Grid.Column="3" HorizontalAlignment="Stretch" Text="-" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
 						</Grid>
