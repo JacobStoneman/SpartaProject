@@ -18,7 +18,11 @@
 
 			</TabItem>
 			<TabItem Header="Orders">
-				<Grid Background="#FFE5E5E5"/>
+
+				<DockPanel>
+					<Frame x:Name="customer_order_frame" NavigationUIVisibility="Hidden"/>
+				</DockPanel>
+				
 			</TabItem>
 		</TabControl>
 

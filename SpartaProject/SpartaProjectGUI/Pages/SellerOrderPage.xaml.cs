@@ -30,6 +30,7 @@ namespace SpartaProjectGUI.Pages
 			InitializeComponent();
 			PopulateOrderLists();
 			ToggleButtons();
+			CustomEvents.current.OnProductDeleted += PopulateOrderLists;
 		}
 
 		private void PopulateOrderLists()

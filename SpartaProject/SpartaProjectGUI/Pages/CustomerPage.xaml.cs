@@ -23,6 +23,7 @@ namespace SpartaProjectGUI.Pages
 		{
 			InitializeComponent();
 			customer_product_frame.Navigate(new ProductPage(crudUser));
+			customer_order_frame.Navigate(new CustomerOrderPage(crudUser));
 		}
 	}
 }

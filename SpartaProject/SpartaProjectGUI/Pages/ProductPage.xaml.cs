@@ -130,6 +130,7 @@ namespace SpartaProjectGUI.Pages
 					CrudOrder.Create(CrudProduct.Selected, currentCustomer);
 				}
 				MessageBox.Show("Order Placed");
+				CustomEvents.current.NewOrderPlaced();
 			}
 		}
 	}

@@ -84,6 +84,7 @@ namespace SpartaProjectGUI
 			textBox_name_value.Text = string.Empty;
 			textBox_price_value.Text = string.Empty;
 			textBox_URL_value.Text = string.Empty;
+			CustomEvents.current.ProductDeleted();
 		}
 	}
 }
