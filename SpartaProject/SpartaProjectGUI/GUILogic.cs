@@ -31,12 +31,18 @@ namespace SpartaProjectGUI
 			image.Source = newImage;
 		}
 
-		public void DisplayProductInfoGrid(Product product, TextBlock prodIdValue, TextBlock prodNameValue, TextBlock prodPriceValue, TextBlock prodRatingValue, Image image)
+		public void DisplayProductInfoGrid(Product product, TextBlock prodIdValue, TextBlock prodNameValue, TextBlock prodPriceValue, TextBlock prodRatingValue, Image image, float averageRating)
 		{
 			prodIdValue.Text = product.ProductId.ToString();
 			prodNameValue.Text = product.Name;
 			prodPriceValue.Text = $"£{product.Price}";
-			//TODO: Rating set here
+			if (averageRating >= 0)
+			{
+				prodRatingValue.Text = averageRating.ToString();
+			} else
+			{
+				prodRatingValue.Text = "-";
+			}
 
 			try
 			{

@@ -69,7 +69,22 @@ namespace SpartaProjectGUI.Pages
 				using (ProjectContext db = new ProjectContext())
 				{
 					Product selectedProduct = db.Products.Where(p => p.ProductId == CrudOrder.Selected.ProductId).FirstOrDefault();
-					logic.DisplayProductInfoGrid(selectedProduct, textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value, image_product);
+
+					float avRating = 0;
+					List<Review> allReviews = (from r in db.Reviews where r.ProductId == selectedProduct.ProductId select r).ToList();
+					if (allReviews.Count == 0)
+					{
+						avRating = -1;
+					}
+					else
+					{
+						foreach (Review r in allReviews)
+						{
+							avRating += r.Rating;
+						}
+						avRating /= allReviews.Count();
+					}
+					logic.DisplayProductInfoGrid(selectedProduct, textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value, image_product,avRating);
 				}
 			}
 		}

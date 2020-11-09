@@ -76,3 +76,5 @@ C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectGUI\obj\De
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectGUI\obj\Debug\netcoreapp3.1\Pages\SellerOrderPage.baml
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectGUI\obj\Debug\netcoreapp3.1\Pages\CustomerOrderPage.g.cs
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectGUI\obj\Debug\netcoreapp3.1\Pages\CustomerOrderPage.baml
+C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectGUI\obj\Debug\netcoreapp3.1\ReviewConfig.g.cs
+C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectGUI\obj\Debug\netcoreapp3.1\ReviewConfig.baml

@@ -56,7 +56,7 @@
 				<TextBlock x:Name="textBlock_product_id" Grid.Row="0" HorizontalAlignment="Stretch" Text="Product ID:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
 				<TextBlock x:Name="textBlock_product_name" Grid.Row="1" HorizontalAlignment="Stretch" Text="Name:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
 				<TextBlock x:Name="textBlock_product_price" Grid.Row="2" HorizontalAlignment="Stretch" Text="Price:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
-				<TextBlock x:Name="textBlock_product_rating" Grid.Row="3" HorizontalAlignment="Stretch" Text="-" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
+				<TextBlock x:Name="textBlock_product_rating" Grid.Row="3" HorizontalAlignment="Stretch" Text="Rating:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
 
 				<TextBlock x:Name="textBlock_product_id_value" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Stretch" Text="-" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
 				<TextBlock x:Name="textBlock_product_name_value" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" Text="-" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20" Padding="10,0,0,0"/>
@@ -66,9 +66,19 @@
 
 		</Grid>
 
-		<ScrollViewer Grid.Column="2">
-			<ListBox x:Name="listBox"/>
-		</ScrollViewer>
+		<Grid Grid.Column="2">
+
+			<Grid.RowDefinitions>
+				<RowDefinition/>
+				<RowDefinition MinHeight="50" MaxHeight="50"/>
+			</Grid.RowDefinitions>
+
+			<ScrollViewer>
+				<ListBox x:Name="listBox_reviews"/>
+			</ScrollViewer>
+			
+			<Button x:Name="button_review" Grid.Row="1" Content="Review This Product" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="button_review_Click"/>
+		</Grid>
 
 	</Grid>
 </Page>

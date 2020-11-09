@@ -39,6 +39,7 @@ namespace SpartaProjectGUI.Pages
 		private void InitialiseValues()
 		{
 			logic.InitialiseProductInfoGrid(textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value,image_product);
+			button_review.IsEnabled = false;
 
 			if (CrudUser.Selected.AccountType == 0)
 			{
@@ -80,6 +81,21 @@ namespace SpartaProjectGUI.Pages
 			}
 		}
 
+		private void PopulateReviewList()
+		{
+			using (ProjectContext db = new ProjectContext())
+			{
+				if (CrudProduct.Selected != null)
+				{
+					List<Review> prodReviews = (from r in db.Reviews where r.ProductId == CrudProduct.Selected.ProductId select r).ToList();
+					listBox_reviews.ItemsSource = prodReviews;
+				} else
+				{
+					listBox_reviews.ItemsSource = null;
+				}
+			}
+		}
+
 		private void SetProductValues()
 		{
 			if (CrudProduct.Selected == null)
@@ -88,7 +104,29 @@ namespace SpartaProjectGUI.Pages
 			}
 			else
 			{
-				logic.DisplayProductInfoGrid(CrudProduct.Selected, textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value, image_product);
+				logic.DisplayProductInfoGrid(CrudProduct.Selected, textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value, image_product,GetAverageRating());
+			}
+		}
+
+		private float GetAverageRating()
+		{
+			float avRating = 0;
+			using (ProjectContext db = new ProjectContext())
+			{
+				List<Review> allReviews = (from r in db.Reviews where r.ProductId == CrudProduct.Selected.ProductId select r).ToList();
+				if (allReviews.Count == 0)
+				{
+					avRating = -1;
+				}
+				else
+				{
+					foreach (Review r in allReviews)
+					{
+						avRating += r.Rating;
+					}
+					avRating /= allReviews.Count();
+				}
+				return avRating;
 			}
 		}
 
@@ -109,6 +147,11 @@ namespace SpartaProjectGUI.Pages
 		{
 			CrudProduct.Selected = CrudProduct.SetSelected<Product>(listBox_product.SelectedItem);
 			SetProductValues();
+			if(CrudUser.Selected.AccountType == 1)
+			{
+				button_review.IsEnabled = true;
+			}
+			PopulateReviewList();
 		}
 
 		private void textBox_product_search_TextChanged(object sender, TextChangedEventArgs e)
@@ -131,6 +174,27 @@ namespace SpartaProjectGUI.Pages
 				}
 				MessageBox.Show("Order Placed");
 				CustomEvents.current.NewOrderPlaced();
+			}
+		}
+
+		private void button_review_Click(object sender, RoutedEventArgs e)
+		{
+			using (ProjectContext db = new ProjectContext())
+			{
+				Review customerReview = db.Reviews.Where(r => r.ProductId == CrudProduct.Selected.ProductId && r.Customer.User.UserId == CrudUser.Selected.UserId).FirstOrDefault();
+				Customer currentCustomer = db.Customers.Where(c => c.UserId == CrudUser.Selected.UserId).FirstOrDefault();
+				ReviewConfig config = new ReviewConfig(customerReview, currentCustomer,CrudProduct.Selected);
+				config.Closed += ReviewConfigClosed;
+				config.ShowDialog();
+			}
+		}
+
+		private void ReviewConfigClosed(object sender, EventArgs e)
+		{
+			if (CrudProduct.Selected != null)
+			{
+				PopulateReviewList();
+				logic.DisplayProductInfoGrid(CrudProduct.Selected, textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value, image_product, GetAverageRating());
 			}
 		}
 	}
