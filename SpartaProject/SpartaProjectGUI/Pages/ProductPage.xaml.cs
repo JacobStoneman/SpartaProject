@@ -23,7 +23,8 @@ namespace SpartaProjectGUI.Pages
 	/// </summary>
 	public partial class ProductPage : Page
 	{
-		const string defaultImage = "https://www.tibs.org.tw/images/default.jpg";
+		GUILogic logic = new GUILogic();
+		
 		CRUDManagerUser CrudUser;
 		CRUDManagerProduct CrudProduct = new CRUDManagerProduct();
 		CRUDManagerOrder CrudOrder = new CRUDManagerOrder();
@@ -37,12 +38,7 @@ namespace SpartaProjectGUI.Pages
 
 		private void InitialiseValues()
 		{
-			BitmapImage image = new BitmapImage(new Uri(defaultImage, UriKind.Absolute));
-			image_product.Source = image;
-			textBlock_product_id_value.Text = string.Empty;
-			textBlock_product_name_value.Text = string.Empty;
-			textBlock_product_price_value.Text = string.Empty;
-			textBlock_product_rating_value.Text = string.Empty;
+			logic.InitialiseProductInfoGrid(textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value,image_product);
 
 			if (CrudUser.Selected.AccountType == 0)
 			{
@@ -92,21 +88,7 @@ namespace SpartaProjectGUI.Pages
 			}
 			else
 			{
-				try
-				{
-					BitmapImage image = new BitmapImage(new Uri(CrudProduct.Selected.Url, UriKind.Absolute));
-					image_product.Source = image;
-				}
-				catch (UriFormatException)
-				{
-					BitmapImage image = new BitmapImage(new Uri(defaultImage, UriKind.Absolute));
-					image_product.Source = image;
-				}
-
-				textBlock_product_name_value.Text = CrudProduct.Selected.Name;
-				textBlock_product_id_value.Text = CrudProduct.Selected.ProductId.ToString();
-				textBlock_product_price_value.Text = $"£{CrudProduct.Selected.Price}";
-				//TODO: Rating updated here
+				logic.DisplayProductInfoGrid(CrudProduct.Selected, textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value, image_product);
 			}
 		}
 

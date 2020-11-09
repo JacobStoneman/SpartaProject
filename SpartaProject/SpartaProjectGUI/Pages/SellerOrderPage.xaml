@@ -12,7 +12,6 @@
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition MinWidth="250" MaxWidth="250"/>
 			<ColumnDefinition/>
-			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 
 		<Grid Grid.Column="0">
@@ -55,35 +54,44 @@
 					</Grid>
 				</Grid>
 			</Grid>
-			<Button x:Name="button_markOrder" Content="Mark Order as Shipped" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch"/>
-			<Button x:Name="button_deleteOrder" Content="Delete Selected Order" HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch"/>
+			<Button x:Name="button_markOrder" Content="Mark Order as Shipped" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch" Click="button_markOrder_Click"/>
+			<Button x:Name="button_deleteOrder" Content="Delete Selected Order" HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch" Click="button_deleteOrder_Click"/>
 		</Grid>
-		
+
 		<Grid Grid.Column="1">
+
 			<Grid.RowDefinitions>
-				<RowDefinition MinHeight="30" MaxHeight="30"/>
+				<RowDefinition/>
 				<RowDefinition/>
 			</Grid.RowDefinitions>
-
-			<TextBlock x:Name="textBlock_newOrders" Padding="10,0,0,0" HorizontalAlignment="Stretch" Text="New Orders:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20"/>
 			
-			<ScrollViewer Grid.Row="1">
-				<ListBox x:Name="listBox_newOrders"></ListBox>
-			</ScrollViewer>
+			<Grid Grid.Row ="0">
+				<Grid.RowDefinitions>
+					<RowDefinition MinHeight="30" MaxHeight="30"/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
 
+				<TextBlock x:Name="textBlock_newOrders" Padding="10,0,0,0" HorizontalAlignment="Stretch" Text="New Orders:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20"/>
+
+				<ScrollViewer Grid.Row="1">
+					<ListBox x:Name="listBox_newOrders" SelectionChanged="listBox_newOrders_SelectionChanged"></ListBox>
+				</ScrollViewer>
+
+			</Grid>
+			
+			<Grid Grid.Row="1">
+				<Grid.RowDefinitions>
+					<RowDefinition MinHeight="30" MaxHeight="30"/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+
+				<TextBlock x:Name="textBlock_shippedOrders" Padding="10,0,0,0" HorizontalAlignment="Stretch" Text="Shipped Orders:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20"/>
+
+				<ScrollViewer Grid.Row="1">
+					<ListBox x:Name="listBox_shippedOrders" SelectionChanged="listBox_shippedOrders_SelectionChanged"></ListBox>
+				</ScrollViewer>
 		</Grid>
 
-		<Grid Grid.Column="2">
-			<Grid.RowDefinitions>
-				<RowDefinition MinHeight="30" MaxHeight="30"/>
-				<RowDefinition/>
-			</Grid.RowDefinitions>
-
-			<TextBlock x:Name="textBlock_shippedOrders" Padding="10,0,0,0" HorizontalAlignment="Stretch" Text="Shipped Orders:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20"/>
-
-			<ScrollViewer Grid.Row="1">
-				<ListBox x:Name="listBox_shippedOrders"></ListBox>
-			</ScrollViewer>
 
 		</Grid>
 

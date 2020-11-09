@@ -41,6 +41,7 @@ namespace SpartaProjectTests
 			}
 		}
 
+
 		[Test]
 		public void WhenANewOrderIsAdded_TheNumberOfOrdersIncreasesBy1()
 		{
@@ -50,6 +51,56 @@ namespace SpartaProjectTests
 				_crud.Create(db.Products.FirstOrDefault(),db.Customers.FirstOrDefault());
 
 				Assert.AreEqual(originalNum + 1, db.Orders.Count());
+			}
+		}
+
+		[Test]
+		public void OrderIsMarkedAsShipped()
+		{
+			using(var db = new ProjectContext())
+			{
+				Order testOrder = new Order()
+				{
+					ProductId = db.Products.FirstOrDefault().ProductId,
+					CustomerId = db.Customers.FirstOrDefault().CustomerId,
+					Shipped = false
+				};
+				db.Orders.Add(testOrder);
+				db.SaveChanges();
+				_crud.MarkAsShipped(testOrder);
+
+				var selectUpdated =
+					from o in db.Orders
+					where o.OrderId == testOrder.OrderId
+					select o.Shipped;
+
+				bool result = selectUpdated.FirstOrDefault();
+
+				Assert.AreEqual(true, result);
+			}
+		}
+
+
+		[Test]
+		public void WhenAnOrderIsRemoved_ItIsNoLongerInTheDatabase()
+		{
+			using (var db = new ProjectContext())
+			{
+				Order testOrder = new Order()
+				{
+					ProductId = db.Products.FirstOrDefault().ProductId,
+					CustomerId = db.Customers.FirstOrDefault().CustomerId,
+					Shipped = false
+				};
+				db.Orders.Add(testOrder);
+				db.SaveChanges();
+
+				_crud.Delete(testOrder.OrderId);
+
+				Order newOrderSelected = db.Orders.Where(o => o.OrderId == testOrder.OrderId).FirstOrDefault();
+
+				Assert.AreEqual(null, newOrderSelected);
+				CollectionAssert.DoesNotContain(db.Orders, newOrderSelected);
 			}
 		}
 	}

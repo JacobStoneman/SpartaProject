@@ -173,7 +173,7 @@ namespace SpartaProjectGUI.Pages {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/SpartaProjectGUI;V1.0.0.0;component/pages/productpage.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/SpartaProjectGUI;component/pages/productpage.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Pages\ProductPage.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

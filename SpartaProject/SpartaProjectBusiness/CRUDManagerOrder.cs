@@ -11,7 +11,7 @@ namespace SpartaProjectBusiness
 	public class CRUDManagerOrder : CRUDManager
 	{
 		const int daysFromOrderToShip = 3;
-		public Order Selected = new Order();
+		public Order Selected;
 
 		public Order Create(Product product, Customer customer)
 		{
@@ -29,6 +29,15 @@ namespace SpartaProjectBusiness
 				db.SaveChanges();
 
 				return newOrder;
+			}
+		}
+
+		public void MarkAsShipped(Order order)
+		{
+			using (ProjectContext db = new ProjectContext())
+			{
+				db.Orders.Where(o => o.OrderId == order.OrderId).FirstOrDefault().Shipped = true;
+				db.SaveChanges();
 			}
 		}
 

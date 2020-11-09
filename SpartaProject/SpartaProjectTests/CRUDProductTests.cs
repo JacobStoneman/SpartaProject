@@ -98,7 +98,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
-		public void WhenAUserIsRemoved_TheyAreNoLongerInTheDatabase()
+		public void WhenAProductIsRemoved_ItIsNoLongerInTheDatabase()
 		{
 			using (var db = new ProjectContext())
 			{

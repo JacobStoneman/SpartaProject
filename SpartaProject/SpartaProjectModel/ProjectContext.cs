@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
+using System.ComponentModel;
 
 namespace SpartaProjectDB
 {
@@ -68,6 +69,7 @@ namespace SpartaProjectDB
         public Product Product { get; set; }
         public DateTime OrderDate { get; set; }
         public DateTime ShipDate { get; set; }
+        [DefaultValue(false)] public bool Shipped { get; set; }
 
 		public override string ToString()
 		{
