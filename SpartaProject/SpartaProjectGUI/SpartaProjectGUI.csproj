@@ -7,7 +7,15 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Images\shipped.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\SpartaProjectBusiness\SpartaProjectBusiness.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\shipped.png" />
   </ItemGroup>
 
 </Project>

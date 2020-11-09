@@ -53,7 +53,7 @@
 					</Grid>
 				</Grid>
 			</Grid>
-			<Button x:Name="button_deleteOrder" Content="Cancel Selected Order" HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch" />
+			<Button x:Name="button_deleteOrder" Content="Cancel Selected Order" HorizontalAlignment="Stretch" Grid.Row="2" VerticalAlignment="Stretch" Click="button_deleteOrder_Click" />
 		</Grid>
 
 
@@ -66,7 +66,20 @@
 			<TextBlock x:Name="textBlock_myOrders" Padding="10,0,0,0" HorizontalAlignment="Stretch" Text="My Orders:" TextWrapping="Wrap" VerticalAlignment="Stretch" FontSize="20"/>
 
 			<ScrollViewer Grid.Row="1">
-				<ListBox x:Name="listBox_myOrders"></ListBox>
+				<ListBox x:Name="listBox_myOrders" SelectionChanged="listBox_myOrders_SelectionChanged">
+					<ListBox.ItemTemplate>
+						<DataTemplate>
+							<Grid>
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition/>
+									<ColumnDefinition/>
+								</Grid.ColumnDefinitions>
+								<Image Grid.Column="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Source="{Binding OrderStatus}" MinHeight="25" MaxHeight="25" MinWidth="25" MaxWidth="25"/>
+								<TextBlock Grid.Column="1" Padding="10,0,0,0" Text="{Binding OrderDetails}" FontSize="20"/>
+							</Grid>
+						</DataTemplate>
+					</ListBox.ItemTemplate>
+				</ListBox>
 			</ScrollViewer>
 
 		</Grid>
