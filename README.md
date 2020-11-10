@@ -156,7 +156,10 @@ I was also faced with new challenges in how to layout the user interface and as 
 
 ### What Would I Do Differently Next Time?
 
+By breaking the user stories down more efficiently early on I would have had a much better idea of how much work they would involve and therefore would be able to split my time more evenly between the three sprints. This would have been beneficial as it meant more time could be spent testing and refactoring existing features or potentially implementing even more features which I did not get time to complete. I would have also, before the project began, spent some time figuring out which technologies I may need that I am not confident in (i.e. page navigation and entity framework) and researched these topics further.
 
 ### What Would I Do Next?
 
-*Class Diagrams and ERD*
+Despite maybe not being reflected in the remaining user stories, there were a number of extra features that I initially wanted to implement but were ultimately cut as they were not essential. Alongside the remaining unfinished items in the sprint 3 goals such as a UI rework, these would be perfect candidates for features in version 2.
+
+## Class Diagrams
