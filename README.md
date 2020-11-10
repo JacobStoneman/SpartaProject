@@ -21,7 +21,7 @@ The goal of this project is to create an application in which users can either b
 - [x] Unit tests for CRUD operations
 
 #### Project Board 
-![Sprint 1 Snapshot](Snapshots/Sprint1Snapshot.PNG)
+
 
 #### User Stories Completed
 * Product Browsing
@@ -163,3 +163,9 @@ By breaking the user stories down more efficiently early on I would have had a m
 Despite maybe not being reflected in the remaining user stories, there were a number of extra features that I initially wanted to implement but were ultimately cut as they were not essential. Alongside the remaining unfinished items in the sprint 3 goals such as a UI rework, these would be perfect candidates for features in version 2.
 
 ## Class Diagrams
+### Model Class Diagram
+![Model Class Diagram](Snapshots/ModelClassDiagram.PNG)
+
+### CRUDManager Class Diagram
+![CRUDManager Class Diagram](Snapshots/CRUDManagerClassDiagram.PNG)
+
