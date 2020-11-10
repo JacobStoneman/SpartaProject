@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Media.Imaging;
 using System.Windows.Controls;
 using SpartaProjectDB;
+using System.Runtime.InteropServices.WindowsRuntime;
 
 namespace SpartaProjectGUI
 {
@@ -54,5 +55,18 @@ namespace SpartaProjectGUI
 			}
 		}
 
+		public (bool, decimal) CheckDecimalInput(string input)
+		{
+			decimal num;
+			bool isDecimal = decimal.TryParse(input, out num);
+			return (isDecimal, num);
+		}
+
+		public (bool,int) CheckIntInput(string input)
+		{
+			int num;
+			bool isInt = int.TryParse(input, out num);
+			return (isInt, num);
+		}
 	}
 }

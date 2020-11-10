@@ -23,6 +23,7 @@ namespace SpartaProjectGUI
 		Customer Reviewer;
 		Product Product;
 		CRUDManagerReview CrudReview = new CRUDManagerReview();
+		GUILogic logic = new GUILogic();
 		public ReviewConfig(Review selected, Customer customer, Product product)
 		{
 			Selected = selected;
@@ -53,14 +54,39 @@ namespace SpartaProjectGUI
 
 		private void button_add_Click(object sender, RoutedEventArgs e)
 		{
-			CrudReview.Create(int.Parse(textBox_rating_value.Text), textBox_comment_value.Text, Reviewer, Product);
-			Close();
+			(bool, int) ratingInput = logic.CheckIntInput(textBox_rating_value.Text);
+
+			if (!ratingInput.Item1)
+			{
+				MessageBox.Show("Rating must be an integer");
+			} else if (ratingInput.Item2 <= 0 || ratingInput.Item2 > 5)
+			{
+				MessageBox.Show("Rating must be between 1 and 5");
+			} else
+			{
+				CrudReview.Create(ratingInput.Item2, textBox_comment_value.Text, Reviewer, Product);
+				Close();
+			}
+
 		}
 
 		private void button_update_Click(object sender, RoutedEventArgs e)
 		{
-			CrudReview.Update(Selected.ReviewId, int.Parse(textBox_rating_value.Text), textBox_comment_value.Text);
-			MessageBox.Show("Your review has been updated");
+			(bool, int) ratingInput = logic.CheckIntInput(textBox_rating_value.Text);
+
+			if (!ratingInput.Item1)
+			{
+				MessageBox.Show("Rating must be an integer");
+			}
+			else if (ratingInput.Item2 <= 0 || ratingInput.Item2 > 5)
+			{
+				MessageBox.Show("Rating must be between 1 and 5");
+			}
+			else
+			{
+				CrudReview.Update(Selected.ReviewId, ratingInput.Item2, textBox_comment_value.Text);
+				MessageBox.Show("Your review has been updated");
+			}
 		}
 
 		private void button_delete_Click(object sender, RoutedEventArgs e)

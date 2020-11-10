@@ -27,15 +27,11 @@ namespace SpartaProjectBusiness
 			}
 		}
 
-		//TODO: Needs to remove links to other tables
 		public void Delete(int? id)
 		{
 			using (ProjectContext db = new ProjectContext())
 			{
 				Selected = db.Customers.Where(c => c.CustomerId == id).FirstOrDefault();
-
-				//foreach order
-				//delete
 
 				db.Customers.Remove(Selected);
 				db.SaveChanges();
