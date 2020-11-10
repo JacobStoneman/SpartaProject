@@ -82,32 +82,81 @@ The goal of this project is to create an application in which users can either b
 * Despite this, the rest of the sprint goals were completed on time
 * The product aspect of the application has been completed with the ability for sellers to now create and update different products and the customers to browse these products
 * Most of the user interface has now been created despite not all the functionality being there
-* Some logic within the GUI has been repeated and could instead be moved to a seperate class, specifically the code used to display the product information
+* Some logic within the GUI has been repeated and could instead be moved to a separate class, specifically the code used to display the product information
 * New CRUD operations were implemented along side the new functionality
 * These operations have been fully unit tested and pass
 
 #### Action Plan For Final Sprint
 * Going into the final sprint it will be important to organise the remaining project backlog by priority
+* Most important is completing functionality and making sure all desired features are implemented
+* There should also be a focus on improving the visual aspect of the application and refactoring the back end
 
-## Sprint 3
-
-![Sprint 3 Snapshot](Snapshots/Sprint3Snapshot.PNG)
+## Sprint 3 - Final
 ### Review
+#### Sprint Goals
+- [x] Refactor the GUI logic
+- [x] Sellers need to be able to configure orders
+- [x] Customers need to be able to view their orders
+- [x] Review system
+- [ ] Sort products based on filters
+- [ ] Complete documentation
+- [x] All unit tests completed
+- [ ] Update visual aspects of GUI
 
-#### What Went Well?
+#### Project Board
+![Sprint 3 Snapshot](Snapshots/Sprint3Snapshot.PNG)
 
-Custom event system allowing for two pages to communicate when running concurrently
-
-#### Improvements?
-
-Not all features that were originally planned were implemented
-
-#### Action Plan
-
-
+#### User Stories Completed
+* Average Rating
+* Reviewing Products
+* Viewing Reviews
+* Updating Reviews
+* Multiple Reviews
+* Mark as Shipped
+* Customer Account Restrictions
+* Order Cancelling
+* Customer Order Status View
+* Existing Order Viewing
+* Seller Account Permissions
+* All Order Viewing
+* Old Order Clearing
 
 ### Retrospective
+#### Overview
+* A large amount of work was left for this sprint which ultimately meant not everything was completed
+* However work was organised by priority meaning the application is fully functional and meets the initial criteria I set at the beginning of the project
+* Goals such as improving the visual aspects and minor, non-essential features were not implemented
+* An issue arose where the order page and the product page had issues communicating with each other as they are both loaded at the same time within one window and to reflect a change from one on the other, the window had to be reloaded
+* To solve this, I created a custom event system that allowed for the two pages to communicate without creating dependencies, as shown below
+* The event is defined in a separate class and then can be subscribed to within the GUI frontend
+``` C#
+		public event Action OnNewOrderPlaced;
+		public void NewOrderPlaced()
+		{
+			OnNewOrderPlaced?.Invoke();
+		}
+		
+		CustomEvents.current.OnNewOrderPlaced += PopulateOrderList;
+```
+* All CRUD operations have been implemented
+* Modifications were made to the entity framework to accommodate these new features
+* Repeated logic within the GUI frontend has been abstracted and moved to a separate class
+* These features and operations have been unit tested
+* Due to time constraints not all of the initially defined user stories have been completed
+
+#### Remaining User Stories
+* Sort Products While Browsing
+* Seller Order Status
+
+## Project Retrospective
+### What Have I Learned?
+Throughout this project, I have successfully built on the previous knowledge I had in every aspect of this project.
+Through experimenting with the entity framework and the code first approach, I have learnt the underlying logic in how the entities are linked together and how to correctly query the database to most efficiently return the results I need. I have also learnt the importance of planning the entity relationships from the beginning to avoid the need to remodel the database further down the line in order to accommodate new features. Testing CRUD operations has taught me the importance of unit testing as these would routinely find issues within the operations in an enclosed environment allowing me to debug and observe the issues without affecting the application. This ultimately improved the design of my methods as they would be written with testing in mind.
+I was also faced with new challenges in how to layout the user interface and as previously mentioned, this took some time to try different things and see which worked best. Through doing this, I have found new ways to structure a WPF application to create both a more efficient UI and front end implementation. This project has also given me an appreciation and an understanding of the need for good documentation, the project board where I managed my user stories and sprint goals was pivotal in keeping me on track and showing my progress through the project.
+
+### What Would I Do Differently Next Time?
 
 
+### What Would I Do Next?
 
 *Class Diagrams and ERD*
