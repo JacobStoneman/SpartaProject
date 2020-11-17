@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.ComponentModel;
+using SpartaProjectModel.Services;
 
 namespace SpartaProjectDB
 {
@@ -59,24 +60,27 @@ namespace SpartaProjectDB
 
         public float GetAverageRating()
         {
+            List<Review> allReviews = new List<Review>();
+            float avRating = 0;
+
             using (ProjectContext db = new ProjectContext())
             {
-                float avRating = 0;
-                List<Review> allReviews = (from r in db.Reviews where r.ProductId == ProductId select r).ToList();
-                if (allReviews.Count == 0)
-                {
-                    avRating = -1;
-                }
-                else
-                {
-                    foreach (Review r in allReviews)
-                    {
-                        avRating += r.Rating;
-                    }
-                    avRating /= allReviews.Count();
-                }
-                return avRating;
+                allReviews = (from r in db.Reviews where r.ProductId == ProductId select r).ToList();
             }
+
+            if (allReviews.Count == 0)
+            {
+                avRating = -1;
+            }
+            else
+            {
+                foreach (Review r in allReviews)
+                {
+                    avRating += r.Rating;
+                }
+                avRating /= allReviews.Count();
+            }
+            return avRating;
         }
     }
 
@@ -93,11 +97,9 @@ namespace SpartaProjectDB
 
         public override string ToString()
         {
-            using (ProjectContext db = new ProjectContext())
-            {
-                Product prod = db.Products.Where(p => p.ProductId == ProductId).FirstOrDefault();
-                return $"Order: {OrderId} - {prod.Name} - Ship Date: {ShipDate.Year}/{ShipDate.Month}/{ShipDate.Day}";
-            }
+            ProductService productService = new ProductService(new ProjectContext());
+            Product prod = productService.GetProductById(ProductId);
+            return $"Order: {OrderId} - {prod.Name} - Ship Date: {ShipDate.Year}/{ShipDate.Month}/{ShipDate.Day}";
         }
     }
 
@@ -113,12 +115,13 @@ namespace SpartaProjectDB
 
         public override string ToString()
         {
-            using (ProjectContext db = new ProjectContext())
-            {
-                Customer customer = db.Customers.Where(c => c.CustomerId == CustomerId).FirstOrDefault();
-                User user = db.Users.Where(u => u.UserId == customer.UserId).FirstOrDefault();
-                return $"{user}: {Comment} - {Rating}/5";
-            }
+            ProjectContext db = new ProjectContext();
+            CustomerService customerService = new CustomerService(db);
+            UserService userService = new UserService(db);
+
+            Customer customer = customerService.GetCustomerById(CustomerId);
+            User user = userService.GetUserById(customer.UserId);
+            return $"{user}: {Comment} - {Rating}/5";
         }
     }
 }

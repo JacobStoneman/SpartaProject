@@ -1,8 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SpartaProjectDB;
+﻿using SpartaProjectDB;
 using SpartaProjectModel.Services;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace SpartaProjectBusiness
 {

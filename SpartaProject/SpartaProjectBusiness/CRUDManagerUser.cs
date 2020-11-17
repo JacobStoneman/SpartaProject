@@ -1,9 +1,21 @@
 ﻿using SpartaProjectDB;
+using SpartaProjectModel.Services;
 
 namespace SpartaProjectBusiness
 {
 	public class CRUDManagerUser : CRUDManager
 	{
+		private new IUserService _service;
+
+		public CRUDManagerUser()
+		{
+			_service = new UserService(new ProjectContext());
+		}
+
+		public CRUDManagerUser(IService service) : base(service)
+		{
+		}
+
 		public User Selected { get; set; }
 		public User Create(string name, string password, int accountType)
 		{

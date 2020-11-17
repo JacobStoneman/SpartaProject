@@ -6,7 +6,7 @@ namespace SpartaProjectModel.Services
 {
 	public class Service : IService
 	{
-		private readonly ProjectContext db;
+		protected readonly ProjectContext db;
 
 		public Service(ProjectContext context)
 		{

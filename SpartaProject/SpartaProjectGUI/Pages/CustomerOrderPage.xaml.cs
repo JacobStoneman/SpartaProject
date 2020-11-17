@@ -23,8 +23,8 @@ namespace SpartaProjectGUI.Pages
 	/// </summary>
 	public partial class CustomerOrderPage : Page
 	{
-		GUILogic logic = new GUILogic();
 		CRUDManagerOrder CrudOrder = new CRUDManagerOrder();
+		CRUDManagerProduct CrudProduct = new CRUDManagerProduct();
 		CRUDManagerUser CrudUser;
 
 		ProductGrid pGrid;
@@ -70,11 +70,7 @@ namespace SpartaProjectGUI.Pages
 			}
 			else
 			{
-				using (ProjectContext db = new ProjectContext())
-				{
-					Product selectedProduct = db.Products.Where(p => p.ProductId == CrudOrder.Selected.ProductId).FirstOrDefault();
-					pGrid.Focus = selectedProduct;	
-				}
+				pGrid.Focus = CrudProduct.Selected;
 			}
 		}
 
@@ -88,6 +84,7 @@ namespace SpartaProjectGUI.Pages
 			{
 				CrudOrder.Delete(CrudOrder.Selected);
 				CrudOrder.Selected = null;
+				CrudProduct.Selected = null;
 				SetSelectedProductGrid();
 				PopulateOrderList();
 			}
@@ -99,6 +96,7 @@ namespace SpartaProjectGUI.Pages
 			{
 				OrderItem selectedItem = listBox_myOrders.SelectedItem as OrderItem;
 				CrudOrder.Selected = CrudOrder.SetSelected<Order>(selectedItem.Order);
+				CrudProduct.Selected = CrudProduct.GetProductById(CrudOrder.Selected.ProductId);
 				SetSelectedProductGrid();
 			}
 		}

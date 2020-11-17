@@ -112,28 +112,6 @@ namespace SpartaProjectGUI.Pages
 			}
 		}
 
-		private float GetAverageRating()
-		{
-			float avRating = 0;
-			using (ProjectContext db = new ProjectContext())
-			{
-				List<Review> allReviews = (from r in db.Reviews where r.ProductId == CrudProduct.Selected.ProductId select r).ToList();
-				if (allReviews.Count == 0)
-				{
-					avRating = -1;
-				}
-				else
-				{
-					foreach (Review r in allReviews)
-					{
-						avRating += r.Rating;
-					}
-					avRating /= allReviews.Count();
-				}
-				return avRating;
-			}
-		}
-
 		private void button_configure_product_Click(object sender, RoutedEventArgs e)
 		{
 			ProductConfig config = new ProductConfig(CrudProduct);
