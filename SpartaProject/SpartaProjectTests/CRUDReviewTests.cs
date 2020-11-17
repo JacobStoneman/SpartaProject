@@ -81,7 +81,8 @@ namespace SpartaProjectTests
 				db.Reviews.Add(testReview);
 				db.SaveChanges();
 
-				_crud.Update(testReview.ReviewId,5,"testComment");
+				_crud.Update(testReview,5,"testComment");
+				db.SaveChanges();
 
 				var selectUpdated =
 					from r in db.Reviews
@@ -111,7 +112,7 @@ namespace SpartaProjectTests
 				db.Reviews.Add(testReview);
 				db.SaveChanges();
 
-				_crud.Delete(db, db.Reviews, testReview);
+				_crud.Delete(testReview);
 
 				Review newReviewSelected = db.Reviews.Where(r => r.ReviewId == testReview.ReviewId).FirstOrDefault();
 

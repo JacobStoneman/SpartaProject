@@ -8,7 +8,7 @@ namespace SpartaProjectBusiness
 {
 	public abstract class CRUDManager
 	{
-		private IService _service;
+		protected IService _service;
 
 		public CRUDManager()
 		{
@@ -31,10 +31,9 @@ namespace SpartaProjectBusiness
 			return _service.RetrieveAll<T>();
 		}
 
-		public void Delete<T>(ProjectContext db, DbSet<T> set, T obj) where T : class
+		public void Delete<T>(T obj) where T : class
 		{
-			set.Remove(obj);
-			db.SaveChanges();
+			_service.Delete(obj);
 		}
 	}
 }

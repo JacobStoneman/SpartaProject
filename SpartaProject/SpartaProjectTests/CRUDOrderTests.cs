@@ -68,6 +68,7 @@ namespace SpartaProjectTests
 				db.Orders.Add(testOrder);
 				db.SaveChanges();
 				_crud.MarkAsShipped(testOrder);
+				db.SaveChanges();
 
 				var selectUpdated =
 					from o in db.Orders
@@ -95,7 +96,7 @@ namespace SpartaProjectTests
 				db.Orders.Add(testOrder);
 				db.SaveChanges();
 
-				_crud.Delete(db,db.Orders, testOrder);
+				_crud.Delete(testOrder);
 
 				Order newOrderSelected = db.Orders.Where(o => o.OrderId == testOrder.OrderId).FirstOrDefault();
 

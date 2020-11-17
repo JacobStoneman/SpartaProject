@@ -1,10 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SpartaProjectDB;
+﻿using SpartaProjectDB;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
 
 namespace SpartaProjectBusiness
 {
@@ -15,30 +10,23 @@ namespace SpartaProjectBusiness
 
 		public Order Create(Product product, Customer customer)
 		{
-			using (ProjectContext db = new ProjectContext())
+			Order newOrder = new Order()
 			{
-				Order newOrder = new Order()
-				{
-					ProductId = product.ProductId,
-					CustomerId = customer.CustomerId,
-					OrderDate = DateTime.Today,
-					ShipDate = DateTime.Today.AddDays(daysFromOrderToShip)
-				};
+				ProductId = product.ProductId,
+				CustomerId = customer.CustomerId,
+				OrderDate = DateTime.Today,
+				ShipDate = DateTime.Today.AddDays(daysFromOrderToShip)
+			};
 
-				db.Orders.Add(newOrder);
-				db.SaveChanges();
+			_service.Create(newOrder);
 
-				return newOrder;
-			}
+			return newOrder;
 		}
 
 		public void MarkAsShipped(Order order)
 		{
-			using (ProjectContext db = new ProjectContext())
-			{
-				db.Orders.Where(o => o.OrderId == order.OrderId).FirstOrDefault().Shipped = true;
-				db.SaveChanges();
-			}
+			order.Shipped = true;
+			_service.SaveChanges();
 		}
 	}
 }

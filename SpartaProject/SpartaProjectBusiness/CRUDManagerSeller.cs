@@ -1,5 +1,4 @@
 ﻿using SpartaProjectDB;
-using System.Linq;
 
 namespace SpartaProjectBusiness
 {
@@ -9,19 +8,14 @@ namespace SpartaProjectBusiness
 
 		public Seller Create(User user)
 		{
-			using (ProjectContext db = new ProjectContext())
+			Seller newSeller = new Seller()
 			{
-				Seller newSeller = new Seller()
-				{
-					User = user,
-					UserId = user.UserId
-				};
+				UserId = user.UserId
+			};
 
-				db.Sellers.Add(newSeller);
+			_service.Create(newSeller);
 
-				db.SaveChanges();
-				return newSeller;
-			}
+			return newSeller;
 		}
 	}
 }

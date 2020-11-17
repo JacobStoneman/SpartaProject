@@ -86,10 +86,7 @@ namespace SpartaProjectGUI.Pages
 			}
 			else
 			{
-				using (ProjectContext db = new ProjectContext())
-				{
-					CrudOrder.Delete(db, db.Orders, CrudOrder.Selected);
-				}
+				CrudOrder.Delete(CrudOrder.Selected);
 				CrudOrder.Selected = null;
 				SetSelectedProductGrid();
 				PopulateOrderList();

@@ -35,10 +35,7 @@ namespace SpartaProjectGUI.Pages
 
 		private void PopulateUserBox()
 		{
-			using (ProjectContext db = new ProjectContext())
-			{
-				comboBox_username.ItemsSource = CrudUser.RetrieveAll<User>();
-			}
+			comboBox_username.ItemsSource = CrudUser.RetrieveAll<User>();
 		}
 
 		private void button_configure_user_Click(object sender, RoutedEventArgs e)

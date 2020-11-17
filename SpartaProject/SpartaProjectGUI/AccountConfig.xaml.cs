@@ -76,10 +76,8 @@ namespace SpartaProjectGUI
 
 		private void button_delete_Click(object sender, RoutedEventArgs e)
 		{
-			using (ProjectContext db = new ProjectContext())
-			{
-				CrudUser.Delete(db,db.Users, CrudUser.Selected);
-			}
+			CrudUser.Delete(CrudUser.Selected);
+
 			MessageBox.Show($"User: {textBox_name_value.Text} deleted");
 			CrudUser.Selected = null;
 			textBlock_userID_value.Text = string.Empty;
@@ -89,7 +87,7 @@ namespace SpartaProjectGUI
 
 		private void button_update_Click(object sender, RoutedEventArgs e)
 		{
-			CrudUser.Update(CrudUser.Selected.UserId, textBox_name_value.Text,textBox_password_value.Text);
+			CrudUser.Update(CrudUser.Selected, textBox_name_value.Text,textBox_password_value.Text);
 			MessageBox.Show($"User: {textBox_name_value.Text} updated");
 		}
 	}

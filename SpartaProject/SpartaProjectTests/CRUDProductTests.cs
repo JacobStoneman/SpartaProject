@@ -80,7 +80,8 @@ namespace SpartaProjectTests
 				db.Products.Add(testProduct);
 				db.SaveChanges();
 
-				_crud.Update(testProduct.ProductId, "testProduct", 1,"url");
+				_crud.Update(testProduct, "testProduct", 1,"url");
+				db.SaveChanges();
 
 				var selectUpdated =
 					from p in db.Products
@@ -109,7 +110,7 @@ namespace SpartaProjectTests
 				db.Products.Add(testProduct);
 				db.SaveChanges();
 
-				_crud.Delete(db, db.Products, testProduct);
+				_crud.Delete(testProduct);
 
 				Product newProductSelected = db.Products.Where(p => p.ProductId == testProduct.ProductId).FirstOrDefault();
 

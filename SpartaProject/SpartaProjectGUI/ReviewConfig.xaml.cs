@@ -86,16 +86,14 @@ namespace SpartaProjectGUI
 			}
 			else
 			{
-				CrudReview.Update(Selected.ReviewId, ratingInput.Item2, textBox_comment_value.Text);
+				CrudReview.Update(Selected, ratingInput.Item2, textBox_comment_value.Text);
 				MessageBox.Show("Your review has been updated");
 			}
 		}
 
 		private void button_delete_Click(object sender, RoutedEventArgs e)
 		{
-			using (ProjectContext db = new ProjectContext()) {
-				CrudReview.Delete(db, db.Reviews, Selected);
-			}
+			CrudReview.Delete(Selected);
 			MessageBox.Show("Your review has been deleted");
 			Close();
 		}

@@ -127,10 +127,7 @@ namespace SpartaProjectGUI.Pages
 
 		private void button_deleteOrder_Click(object sender, RoutedEventArgs e)
 		{
-			using (ProjectContext db = new ProjectContext())
-			{
-				CrudOrder.Delete(db, db.Orders, CrudOrder.Selected);
-			}
+			CrudOrder.Delete(CrudOrder.Selected);
 			CrudOrder.Selected = null;
 			SetSelectedProductGrid();
 			PopulateOrderLists();

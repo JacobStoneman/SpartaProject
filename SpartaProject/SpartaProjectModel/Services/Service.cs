@@ -1,8 +1,5 @@
 ﻿using SpartaProjectDB;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace SpartaProjectModel.Services
@@ -19,6 +16,23 @@ namespace SpartaProjectModel.Services
 		public List<T> RetrieveAll<T>() where T : class
 		{
 			return db.Set<T>().ToList();
+		}
+
+		public void Delete<T>(T obj) where T : class
+		{
+			db.Set<T>().Remove(obj);
+			db.SaveChanges();
+		}
+
+		public void Create<T>(T obj) where T : class
+		{
+			db.Set<T>().Add(obj);
+			db.SaveChanges();
+		}
+
+		public void SaveChanges()
+		{
+			db.SaveChanges();
 		}
 	}
 }

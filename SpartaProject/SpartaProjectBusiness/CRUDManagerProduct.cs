@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SpartaProjectDB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using SpartaProjectDB;
 
 namespace SpartaProjectBusiness
 {
@@ -13,32 +8,22 @@ namespace SpartaProjectBusiness
 
 		public Product Create(string name, decimal price, string url)
 		{
-			using (ProjectContext db = new ProjectContext())
+			Product newProduct = new Product()
 			{
-				Product newProduct = new Product()
-				{
-					Name = name,
-					Price = price,
-					Url = url
-				};
-
-				db.Products.Add(newProduct);
-				db.SaveChanges();
-
-				return newProduct;
-			}
+				Name = name,
+				Price = price,
+				Url = url
+			};
+			_service.Create(newProduct);
+			return newProduct;
 		}
 
-		public void Update(int productId, string name, decimal price, string url)
+		public void Update(Product Selected, string name, decimal price, string url)
 		{
-			using (ProjectContext db = new ProjectContext())
-			{
-				Selected = db.Products.Where(p => p.ProductId == productId).FirstOrDefault();
-				Selected.Name = name;
-				Selected.Price = price;
-				Selected.Url = url;
-				db.SaveChanges();
-			}
+			Selected.Name = name;
+			Selected.Price = price;
+			Selected.Url = url;
+			_service.SaveChanges();
 		}
 	}
 }

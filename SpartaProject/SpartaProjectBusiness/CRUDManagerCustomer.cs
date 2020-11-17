@@ -1,8 +1,4 @@
 ﻿using SpartaProjectDB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace SpartaProjectBusiness
 {
@@ -12,19 +8,14 @@ namespace SpartaProjectBusiness
 
 		public Customer Create(User user)
 		{
-			using (ProjectContext db = new ProjectContext())
+			Customer newCustomer = new Customer()
 			{
-				Customer newCustomer = new Customer()
-				{
-					User = user,
-					UserId = user.UserId
-				};
+				UserId = user.UserId
+			};
 
-				db.Customers.Add(newCustomer);
+			_service.Create(newCustomer);
 
-				db.SaveChanges();
-				return newCustomer;
-			}
+			return newCustomer;
 		}
 	}
 }

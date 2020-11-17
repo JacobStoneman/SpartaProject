@@ -1,9 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using SpartaProjectDB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using SpartaProjectDB;
 
 namespace SpartaProjectBusiness
 {
@@ -13,32 +8,23 @@ namespace SpartaProjectBusiness
 
 		public Review Create(int rating, string comment, Customer customer, Product product)
 		{
-			using (ProjectContext db = new ProjectContext())
+			Review newReview = new Review()
 			{
-				Review newReview = new Review()
-				{
-					CustomerId = customer.CustomerId,
-					ProductId = product.ProductId,
-					Rating = rating,
-					Comment = comment
-				};
-
-				db.Reviews.Add(newReview);
-				db.SaveChanges();
-
-				return newReview;
-			}
+				CustomerId = customer.CustomerId,
+				ProductId = product.ProductId,
+				Rating = rating,
+				Comment = comment
+			};
+			_service.Create(newReview);
+			
+			return newReview;
 		}
 
-		public void Update(int reviewId, int rating, string comment)
+		public void Update(Review Selected, int rating, string comment)
 		{
-			using (ProjectContext db = new ProjectContext())
-			{
-				Selected = db.Reviews.Where(r => r.ReviewId == reviewId).FirstOrDefault();
-				Selected.Rating = rating;
-				Selected.Comment = comment;
-				db.SaveChanges();
-			}
+			Selected.Rating = rating;
+			Selected.Comment = comment;
+			_service.SaveChanges();
 		}
 	}
 }
