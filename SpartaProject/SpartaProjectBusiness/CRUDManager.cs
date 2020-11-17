@@ -20,5 +20,11 @@ namespace SpartaProjectBusiness
 				return set.ToList();
 			}
 		}
+
+		public void Delete<T>(ProjectContext db, DbSet<T> set, T obj) where T : class
+		{
+			set.Remove(obj);
+			db.SaveChanges();
+		}
 	}
 }

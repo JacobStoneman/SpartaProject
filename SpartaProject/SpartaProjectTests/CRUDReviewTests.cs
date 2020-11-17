@@ -97,7 +97,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
-		public void WhenAnOrderIsRemoved_ItIsNoLongerInTheDatabase()
+		public void WhenAnReviewIsRemoved_ItIsNoLongerInTheDatabase()
 		{
 			using (var db = new ProjectContext())
 			{
@@ -111,11 +111,11 @@ namespace SpartaProjectTests
 				db.Reviews.Add(testReview);
 				db.SaveChanges();
 
-				_crud.Delete(testReview.ReviewId);
+				_crud.Delete(db, db.Reviews, testReview);
 
 				Review newReviewSelected = db.Reviews.Where(r => r.ReviewId == testReview.ReviewId).FirstOrDefault();
 
-				CollectionAssert.DoesNotContain(db.Reviews, newReviewSelected);
+				CollectionAssert.DoesNotContain(db.Reviews, testReview);
 			}
 		}
 	}

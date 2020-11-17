@@ -26,10 +26,14 @@ namespace SpartaProjectGUI.Pages
 		GUILogic logic = new GUILogic();
 		CRUDManagerOrder CrudOrder = new CRUDManagerOrder();
 		CRUDManagerUser CrudUser;
+
+		ProductGrid pGrid;
+
 		public CustomerOrderPage(CRUDManagerUser crudUser)
 		{
 			CrudUser = crudUser;
 			InitializeComponent();
+			pGrid = new ProductGrid(textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value,image_product);
 			PopulateOrderList();
 			CustomEvents.current.OnNewOrderPlaced += PopulateOrderList;
 		}
@@ -62,29 +66,14 @@ namespace SpartaProjectGUI.Pages
 		{
 			if (CrudOrder.Selected == null)
 			{
-				logic.InitialiseProductInfoGrid(textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value, image_product);
+				pGrid.InitialiseProductInfoGrid();
 			}
 			else
 			{
 				using (ProjectContext db = new ProjectContext())
 				{
 					Product selectedProduct = db.Products.Where(p => p.ProductId == CrudOrder.Selected.ProductId).FirstOrDefault();
-
-					float avRating = 0;
-					List<Review> allReviews = (from r in db.Reviews where r.ProductId == selectedProduct.ProductId select r).ToList();
-					if (allReviews.Count == 0)
-					{
-						avRating = -1;
-					}
-					else
-					{
-						foreach (Review r in allReviews)
-						{
-							avRating += r.Rating;
-						}
-						avRating /= allReviews.Count();
-					}
-					logic.DisplayProductInfoGrid(selectedProduct, textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value, image_product,avRating);
+					pGrid.Focus = selectedProduct;	
 				}
 			}
 		}
@@ -97,7 +86,10 @@ namespace SpartaProjectGUI.Pages
 			}
 			else
 			{
-				CrudOrder.Delete(CrudOrder.Selected.OrderId);
+				using (ProjectContext db = new ProjectContext())
+				{
+					CrudOrder.Delete(db, db.Orders, CrudOrder.Selected);
+				}
 				CrudOrder.Selected = null;
 				SetSelectedProductGrid();
 				PopulateOrderList();

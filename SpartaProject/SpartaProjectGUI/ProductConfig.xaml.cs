@@ -63,27 +63,42 @@ namespace SpartaProjectGUI
 
 		private void button_update_Click(object sender, RoutedEventArgs e)
 		{
-			(bool, decimal) priceInput = logic.CheckDecimalInput(textBox_price_value.Text);
-
-			if (!priceInput.Item1)
+			if (CrudProduct.Selected != null)
 			{
-				MessageBox.Show("Price must be a numeric value");
-				return;
+				(bool, decimal) priceInput = logic.CheckDecimalInput(textBox_price_value.Text);
+
+				if (!priceInput.Item1)
+				{
+					MessageBox.Show("Price must be a numeric value");
+					return;
+				}
+				CrudProduct.Update(CrudProduct.Selected.ProductId, textBox_name_value.Text, priceInput.Item2, textBox_URL_value.Text);
+				MessageBox.Show($"Product: {textBox_name_value.Text} updated");
+			} else
+			{
+				MessageBox.Show("Please select a product to update");
 			}
-			CrudProduct.Update(CrudProduct.Selected.ProductId, textBox_name_value.Text, priceInput.Item2,textBox_URL_value.Text);
-			MessageBox.Show($"Product: {textBox_name_value.Text} updated");
 		}
 
 		private void button_delete_Click(object sender, RoutedEventArgs e)
 		{
-			CrudProduct.Delete(CrudProduct.Selected.ProductId);
-			MessageBox.Show($"Product: {textBox_name_value.Text} deleted");
-			CrudProduct.Selected = null;
-			textBlock_productID.Text = string.Empty;
-			textBox_name_value.Text = string.Empty;
-			textBox_price_value.Text = string.Empty;
-			textBox_URL_value.Text = string.Empty;
-			CustomEvents.current.ProductDeleted();
+			if (CrudProduct.Selected != null)
+			{
+				using (ProjectContext db = new ProjectContext())
+				{
+					CrudProduct.Delete(db, db.Products, CrudProduct.Selected);
+				}
+				MessageBox.Show($"Product: {textBox_name_value.Text} deleted");
+				CrudProduct.Selected = null;
+				textBlock_productID.Text = string.Empty;
+				textBox_name_value.Text = string.Empty;
+				textBox_price_value.Text = string.Empty;
+				textBox_URL_value.Text = string.Empty;
+				CustomEvents.current.ProductDeleted();
+			} else
+			{
+				MessageBox.Show("Please select a product to delete");
+			}
 		}
 	}
 }

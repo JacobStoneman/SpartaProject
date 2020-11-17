@@ -95,7 +95,7 @@ namespace SpartaProjectTests
 				db.Orders.Add(testOrder);
 				db.SaveChanges();
 
-				_crud.Delete(testOrder.OrderId);
+				_crud.Delete(db,db.Orders, testOrder);
 
 				Order newOrderSelected = db.Orders.Where(o => o.OrderId == testOrder.OrderId).FirstOrDefault();
 

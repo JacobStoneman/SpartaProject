@@ -109,7 +109,7 @@ namespace SpartaProjectTests
 				db.Products.Add(testProduct);
 				db.SaveChanges();
 
-				_crud.Delete(testProduct.ProductId);
+				_crud.Delete(db, db.Products, testProduct);
 
 				Product newProductSelected = db.Products.Where(p => p.ProductId == testProduct.ProductId).FirstOrDefault();
 

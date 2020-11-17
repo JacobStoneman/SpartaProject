@@ -40,15 +40,5 @@ namespace SpartaProjectBusiness
 				db.SaveChanges();
 			}
 		}
-
-		public void Delete(int orderId)
-		{
-			using (ProjectContext db = new ProjectContext())
-			{
-				Selected = db.Orders.Where(o => o.OrderId == orderId).FirstOrDefault();
-				db.Orders.Remove(Selected);
-				db.SaveChanges();
-			}
-		}
 	}
 }

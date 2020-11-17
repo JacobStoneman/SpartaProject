@@ -28,17 +28,21 @@ namespace SpartaProjectGUI.Pages
 		CRUDManagerUser CrudUser;
 		CRUDManagerProduct CrudProduct = new CRUDManagerProduct();
 		CRUDManagerOrder CrudOrder = new CRUDManagerOrder();
+
+		ProductGrid pGrid;
+
 		public ProductPage(CRUDManagerUser crudUser)
 		{
 			CrudUser = crudUser;
 			InitializeComponent();
+			pGrid = new ProductGrid(textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value, image_product);
 			InitialiseValues();
 			PopulateProductList();
 		}
 
 		private void InitialiseValues()
 		{
-			logic.InitialiseProductInfoGrid(textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value,image_product);
+			pGrid.InitialiseProductInfoGrid();
 			button_review.IsEnabled = false;
 
 			if (CrudUser.Selected.AccountType == 0)
@@ -104,7 +108,7 @@ namespace SpartaProjectGUI.Pages
 			}
 			else
 			{
-				logic.DisplayProductInfoGrid(CrudProduct.Selected, textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value, image_product,GetAverageRating());
+				pGrid.Focus = CrudProduct.Selected;
 			}
 		}
 
@@ -194,7 +198,7 @@ namespace SpartaProjectGUI.Pages
 			if (CrudProduct.Selected != null)
 			{
 				PopulateReviewList();
-				logic.DisplayProductInfoGrid(CrudProduct.Selected, textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value, image_product, GetAverageRating());
+				pGrid.Focus = CrudProduct.Selected;
 			}
 		}
 	}

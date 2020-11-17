@@ -40,26 +40,5 @@ namespace SpartaProjectBusiness
 				db.SaveChanges();
 			}
 		}
-
-		public void Delete(int productId)
-		{
-			using (ProjectContext db = new ProjectContext())
-			{
-				Selected = db.Products.Where(p => p.ProductId == productId).FirstOrDefault();
-
-				CRUDManagerOrder crudOrder = new CRUDManagerOrder();
-				var selectedOrders =
-					from o in db.Orders
-					where o.ProductId == db.Products.FirstOrDefault().ProductId
-					select o;
-				foreach (Order o in selectedOrders) 
-				{
-					crudOrder.Delete(o.OrderId);
-				}
-
-				db.Products.Remove(Selected);
-				db.SaveChanges();
-			}
-		}
 	}
 }

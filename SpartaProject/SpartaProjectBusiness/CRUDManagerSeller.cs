@@ -23,15 +23,5 @@ namespace SpartaProjectBusiness
 				return newSeller;
 			}
 		}
-
-		public void Delete(int? id)
-		{
-			using (ProjectContext db = new ProjectContext())
-			{
-				Selected = db.Sellers.Where(s => s.SellerId == id).FirstOrDefault();
-				db.Sellers.Remove(Selected);
-				db.SaveChanges();
-			}
-		}
 	}
 }

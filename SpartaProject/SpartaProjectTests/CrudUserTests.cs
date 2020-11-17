@@ -106,7 +106,7 @@ namespace SpartaProjectTests
 				db.Users.Add(testUser);
 				db.SaveChanges();
 
-				_crud.Delete(testUser.UserId);
+				_crud.Delete(db, db.Users, testUser);
 
 				User newUserSelected = db.Users.Where(u => u.UserId == testUser.UserId).FirstOrDefault();
 
@@ -129,7 +129,7 @@ namespace SpartaProjectTests
 				
 				Customer newCustomerSelected = db.Customers.Where(c => c.UserId == testUser.UserId).FirstOrDefault();
 
-				_crud.Delete(testUser.UserId);
+				_crud.Delete(db, db.Users, testUser);
 
 				CollectionAssert.DoesNotContain(db.Customers, newCustomerSelected);
 			}
@@ -150,7 +150,7 @@ namespace SpartaProjectTests
 
 				Seller newSellerSelected = db.Sellers.Where(s => s.UserId == testUser.UserId).FirstOrDefault();
 
-				_crud.Delete(testUser.UserId);
+				_crud.Delete(db, db.Users, testUser);
 
 				CollectionAssert.DoesNotContain(db.Sellers, newSellerSelected);
 			}

@@ -1,45 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="SpartaProjectBusiness.CRUDManager">
-    <Position X="6" Y="1.5" Width="1.5" />
+    <Position X="14" Y="1.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAAAAAA=</HashCode>
       <FileName>CRUDManager.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SpartaProjectBusiness.CRUDManagerCustomer">
-    <Position X="1.5" Y="4.25" Width="1.5" />
+    <Position X="9" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAI=</HashCode>
       <FileName>CRUDManagerCustomer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SpartaProjectBusiness.CRUDManagerOrder">
-    <Position X="3.75" Y="4.25" Width="1.5" />
+    <Position X="11.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgEAAEAAAAAAAAAIAAI=</HashCode>
       <FileName>CRUDManagerOrder.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SpartaProjectBusiness.CRUDManagerProduct">
-    <Position X="6" Y="4.25" Width="1.5" />
+    <Position X="13.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAI=</HashCode>
       <FileName>CRUDManagerProduct.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SpartaProjectBusiness.CRUDManagerSeller">
-    <Position X="8.25" Y="4.25" Width="1.5" />
+    <Position X="15.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAI=</HashCode>
       <FileName>CRUDManagerSeller.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="SpartaProjectBusiness.CRUDManagerUser">
-    <Position X="10.5" Y="4.25" Width="1.5" />
+    <Position X="18" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAI=</HashCode>
       <FileName>CRUDManagerUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SpartaProjectBusiness.CRUDManagerReview">
+    <Position X="20.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAEAAEAAAAAAAAAAAAI=</HashCode>
+      <FileName>CRUDManagerReview.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

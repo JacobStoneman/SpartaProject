@@ -76,7 +76,10 @@ namespace SpartaProjectGUI
 
 		private void button_delete_Click(object sender, RoutedEventArgs e)
 		{
-			CrudUser.Delete(CrudUser.Selected.UserId);
+			using (ProjectContext db = new ProjectContext())
+			{
+				CrudUser.Delete(db,db.Users, CrudUser.Selected);
+			}
 			MessageBox.Show($"User: {textBox_name_value.Text} deleted");
 			CrudUser.Selected = null;
 			textBlock_userID_value.Text = string.Empty;

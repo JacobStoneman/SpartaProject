@@ -52,17 +52,19 @@ namespace SpartaProjectGUI
 			}
 		}
 
-		private void button_add_Click(object sender, RoutedEventArgs e)
+		private void Button_add_Click(object sender, RoutedEventArgs e)
 		{
 			(bool, int) ratingInput = logic.CheckIntInput(textBox_rating_value.Text);
 
 			if (!ratingInput.Item1)
 			{
 				MessageBox.Show("Rating must be an integer");
-			} else if (ratingInput.Item2 <= 0 || ratingInput.Item2 > 5)
+			} 
+			else if (ratingInput.Item2 <= 0 || ratingInput.Item2 > 5)
 			{
 				MessageBox.Show("Rating must be between 1 and 5");
-			} else
+			} 
+			else
 			{
 				CrudReview.Create(ratingInput.Item2, textBox_comment_value.Text, Reviewer, Product);
 				Close();
@@ -91,7 +93,9 @@ namespace SpartaProjectGUI
 
 		private void button_delete_Click(object sender, RoutedEventArgs e)
 		{
-			CrudReview.Delete(Selected.ReviewId);
+			using (ProjectContext db = new ProjectContext()) {
+				CrudReview.Delete(db, db.Reviews, Selected);
+			}
 			MessageBox.Show("Your review has been deleted");
 			Close();
 		}

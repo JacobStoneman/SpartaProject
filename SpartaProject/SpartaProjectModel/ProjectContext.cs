@@ -26,10 +26,7 @@ namespace SpartaProjectDB
         public string Password { get; set; }
         public int AccountType { get; set; }
 
-        public override string ToString()
-        {
-            return Name;
-        }
+        public override string ToString() => Name;
     }
 
     public class Seller
@@ -58,9 +55,28 @@ namespace SpartaProjectDB
         public float AverageRating { get; set; }
         public List<Review> Reviews { get; } = new List<Review>();
 
-        public override string ToString()
+        public override string ToString() => Name;
+
+        public float GetAverageRating()
         {
-            return Name;
+            using (ProjectContext db = new ProjectContext())
+            {
+                float avRating = 0;
+                List<Review> allReviews = (from r in db.Reviews where r.ProductId == ProductId select r).ToList();
+                if (allReviews.Count == 0)
+                {
+                    avRating = -1;
+                }
+                else
+                {
+                    foreach (Review r in allReviews)
+                    {
+                        avRating += r.Rating;
+                    }
+                    avRating /= allReviews.Count();
+                }
+                return avRating;
+            }
         }
     }
 

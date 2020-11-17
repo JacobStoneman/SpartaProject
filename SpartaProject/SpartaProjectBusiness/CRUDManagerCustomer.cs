@@ -26,16 +26,5 @@ namespace SpartaProjectBusiness
 				return newCustomer;
 			}
 		}
-
-		public void Delete(int? id)
-		{
-			using (ProjectContext db = new ProjectContext())
-			{
-				Selected = db.Customers.Where(c => c.CustomerId == id).FirstOrDefault();
-
-				db.Customers.Remove(Selected);
-				db.SaveChanges();
-			}
-		}
 	}
 }
