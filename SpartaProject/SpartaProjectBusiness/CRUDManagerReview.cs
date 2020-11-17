@@ -40,15 +40,5 @@ namespace SpartaProjectBusiness
 				db.SaveChanges();
 			}
 		}
-
-		//public void Delete(int reviewId)
-		//{
-		//	using (ProjectContext db = new ProjectContext())
-		//	{
-		//		Selected = db.Reviews.Where(r => r.ReviewId == reviewId).FirstOrDefault();
-		//		db.Reviews.Remove(Selected);
-		//		db.SaveChanges();
-		//	}
-		//}
 	}
 }

@@ -46,17 +46,5 @@ namespace SpartaProjectBusiness
 				db.SaveChanges();
 			}
 		}
-
-		//public void Delete(int userId)
-		//{
-		//	using (ProjectContext db = new ProjectContext())
-		//	{
-		//		Selected = db.Users.Where(u => u.UserId == userId).FirstOrDefault();
-
-		//		db.Users.Remove(Selected);
-
-		//		db.SaveChanges();
-		//	}
-		//}
 	}
 }

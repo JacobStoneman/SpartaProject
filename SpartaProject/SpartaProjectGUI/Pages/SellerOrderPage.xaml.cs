@@ -41,7 +41,7 @@ namespace SpartaProjectGUI.Pages
 		{
 			using (ProjectContext db = new ProjectContext())
 			{
-				List<Order> allOrders = CrudOrder.RetrieveAll(db.Orders);
+				List<Order> allOrders = CrudOrder.RetrieveAll<Order>();
 				List<Order> newOrders = new List<Order>();
 				List<Order> shippedOrders = new List<Order>();
 

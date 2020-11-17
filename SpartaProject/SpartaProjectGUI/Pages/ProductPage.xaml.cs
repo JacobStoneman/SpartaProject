@@ -64,7 +64,7 @@ namespace SpartaProjectGUI.Pages
 		{
 			using (ProjectContext db = new ProjectContext())
 			{
-				List<Product> allProducts = CrudProduct.RetrieveAll(db.Products);
+				List<Product> allProducts = CrudProduct.RetrieveAll<Product>();
 				if (textBox_product_search.Text == string.Empty)
 				{
 					listBox_product.ItemsSource = allProducts;

@@ -37,7 +37,7 @@ namespace SpartaProjectGUI.Pages
 		{
 			using (ProjectContext db = new ProjectContext())
 			{
-				comboBox_username.ItemsSource = CrudUser.RetrieveAll(db.Users);
+				comboBox_username.ItemsSource = CrudUser.RetrieveAll<User>();
 			}
 		}
 
