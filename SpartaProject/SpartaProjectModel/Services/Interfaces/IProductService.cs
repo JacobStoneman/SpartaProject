@@ -6,5 +6,6 @@ namespace SpartaProjectModel.Services
 	{
 		public Product GetProductById(int id);
 		public Product GetProductByName(string name);
+		public bool ExistsByName(string name);
 	}
 }

@@ -1,5 +1,7 @@
 ﻿using SpartaProjectDB;
 using System;
+using System.Collections.Generic;
+using SpartaProjectModel.Services;
 
 namespace SpartaProjectBusiness
 {
@@ -7,6 +9,17 @@ namespace SpartaProjectBusiness
 	{
 		const int daysFromOrderToShip = 3;
 		public Order Selected;
+		private new IOrderService _service;
+
+		public CRUDManagerOrder()
+		{
+			_service = new OrderService(new ProjectContext());
+		}
+
+		public CRUDManagerOrder(IOrderService service) : base(service)
+		{
+			_service = service;
+		}
 
 		public Order Create(Product product, Customer customer)
 		{
@@ -27,6 +40,11 @@ namespace SpartaProjectBusiness
 		{
 			order.Shipped = true;
 			_service.SaveChanges();
+		}
+
+		public List<Order> GetAllOrdersByCustomer(Customer customer)
+		{
+			return _service.GetAllOrdersByCustomer(customer);
 		}
 	}
 }

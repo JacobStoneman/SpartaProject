@@ -42,11 +42,7 @@ namespace SpartaProjectGUI.Pages
 
 		private void PopulateOrderList()
 		{
-			List<Order> customerOrders = new List<Order>();
-			using (ProjectContext db = new ProjectContext())
-			{
-				customerOrders = db.Orders.Where(o => o.CustomerId == CrudCustomer.Selected.CustomerId).ToList();
-			}
+			List<Order> customerOrders = CrudOrder.GetAllOrdersByCustomer(CrudCustomer.Selected);
 			List<OrderItem> listItems = new List<OrderItem>();
 
 			foreach(Order o in customerOrders)

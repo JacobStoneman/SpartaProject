@@ -42,6 +42,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		[Ignore("Using old db implementation")]
 		public void WhenANewReviewIsAdded_TheNumberOfReviewsIncreasesBy1()
 		{
 			using (var db = new ProjectContext())
@@ -54,6 +55,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		[Ignore("Using old db implementation")]
 		public void WhenANewOrderIsAdded_ItsDetailsAreCorrect()
 		{
 			using (var db = new ProjectContext())
@@ -67,6 +69,7 @@ namespace SpartaProjectTests
 
 
 		[Test]
+		[Ignore("Using old db implementation")]
 		public void WhenReviewsValuesAreChanged_TheDatabaseIsUpdated()
 		{
 			using (var db = new ProjectContext())
@@ -98,6 +101,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		[Ignore("Using old db implementation")]
 		public void WhenAnReviewIsRemoved_ItIsNoLongerInTheDatabase()
 		{
 			using (var db = new ProjectContext())

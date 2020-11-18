@@ -23,8 +23,8 @@ namespace SpartaProjectGUI.Pages
 	/// </summary>
 	public partial class SellerOrderPage : Page
 	{
-		GUILogic logic = new GUILogic();
 		CRUDManagerOrder CrudOrder = new CRUDManagerOrder();
+		CRUDManagerProduct CrudProduct = new CRUDManagerProduct();
 
 		ProductGrid pGrid;
 
@@ -39,26 +39,23 @@ namespace SpartaProjectGUI.Pages
 
 		private void PopulateOrderLists()
 		{
-			using (ProjectContext db = new ProjectContext())
+			List<Order> allOrders = CrudOrder.RetrieveAll<Order>();
+			List<Order> newOrders = new List<Order>();
+			List<Order> shippedOrders = new List<Order>();
+
+			foreach(Order o in allOrders)
 			{
-				List<Order> allOrders = CrudOrder.RetrieveAll<Order>();
-				List<Order> newOrders = new List<Order>();
-				List<Order> shippedOrders = new List<Order>();
-
-				foreach(Order o in allOrders)
+				if (o.Shipped)
 				{
-					if (o.Shipped)
-					{
-						shippedOrders.Add(o);
-					} else
-					{
-						newOrders.Add(o);
-					}
+					shippedOrders.Add(o);
+				} else
+				{
+					newOrders.Add(o);
 				}
-
-				listBox_newOrders.ItemsSource = newOrders;
-				listBox_shippedOrders.ItemsSource = shippedOrders;
 			}
+
+			listBox_newOrders.ItemsSource = newOrders;
+			listBox_shippedOrders.ItemsSource = shippedOrders;
 		}
 
 		private void button_markOrder_Click(object sender, RoutedEventArgs e)
@@ -95,11 +92,7 @@ namespace SpartaProjectGUI.Pages
 			}
 			else
 			{
-				using (ProjectContext db = new ProjectContext())
-				{
-					Product selectedProduct = db.Products.Where(p => p.ProductId == CrudOrder.Selected.ProductId).FirstOrDefault();
-					pGrid.Focus = selectedProduct;
-				}
+				pGrid.Focus = CrudProduct.Selected;
 			}
 		}
 
@@ -109,6 +102,7 @@ namespace SpartaProjectGUI.Pages
 			{
 				listBox_shippedOrders.SelectedItem = null;
 				CrudOrder.Selected = CrudOrder.SetSelected<Order>(listBox_newOrders.SelectedItem);
+				CrudProduct.Selected = CrudProduct.SetSelected<Product>(CrudProduct.GetProductById(CrudOrder.Selected.ProductId));
 				ToggleButtons();
 				SetSelectedProductGrid();
 			}
@@ -120,6 +114,7 @@ namespace SpartaProjectGUI.Pages
 			{
 				listBox_newOrders.SelectedItem = null;
 				CrudOrder.Selected = CrudOrder.SetSelected<Order>(listBox_shippedOrders.SelectedItem);
+				CrudProduct.Selected = CrudProduct.SetSelected<Product>(CrudProduct.GetProductById(CrudOrder.Selected.ProductId));
 				ToggleButtons();
 				SetSelectedProductGrid();
 			}

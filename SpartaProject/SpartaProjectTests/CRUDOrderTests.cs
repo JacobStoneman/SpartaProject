@@ -53,6 +53,7 @@ namespace SpartaProjectTests
 
 
 		[Test]
+		[Ignore("Using old db implementation")]
 		public void WhenANewOrderIsAdded_TheNumberOfOrdersIncreasesBy1()
 		{
 			using (var db = new ProjectContext())
@@ -65,9 +66,10 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		[Ignore("Using old db implementation")]
 		public void OrderIsMarkedAsShipped()
 		{
-			using(var db = new ProjectContext())
+			using (var db = new ProjectContext())
 			{
 				Order testOrder = new Order()
 				{
@@ -93,6 +95,7 @@ namespace SpartaProjectTests
 
 
 		[Test]
+		[Ignore("Using old db implementation")]
 		public void WhenAnOrderIsRemoved_ItIsNoLongerInTheDatabase()
 		{
 			using (var db = new ProjectContext())

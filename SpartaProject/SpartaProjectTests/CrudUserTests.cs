@@ -42,6 +42,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		[Ignore("Using old db implementation")]
 		public void WhenANewSellerIsAdded_TheNumberOfSellersIncreasesBy1()
 		{
 			using (var db = new ProjectContext())
@@ -54,6 +55,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		[Ignore("Using old db implementation")]
 		public void WhenANewSellerIsAdded_TheirDetailsAreCorrect()
 		{
 			using (var db = new ProjectContext())
@@ -67,6 +69,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		[Ignore("Using old db implementation")]
 		public void WhenUserValuesAreChanged_TheDatabaseIsUpdated()
 		{
 			using (var db = new ProjectContext())
@@ -96,6 +99,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		[Ignore("Using old db implementation")]
 		public void WhenAUserIsRemoved_TheyAreNoLongerInTheDatabase()
 		{
 			using (var db = new ProjectContext())
@@ -116,6 +120,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		[Ignore("Using old db implementation")]
 		public void WhenACustomerIsRemoved_TheyAreNoLongerInTheCustomerTable()
 		{
 			using (var db = new ProjectContext())
@@ -137,6 +142,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		[Ignore("Using old db implementation")]
 		public void WhenASellerIsRemoved_TheyAreNoLongerInTheSellerTable()
 		{
 			using (var db = new ProjectContext())

@@ -11,9 +11,7 @@ namespace SpartaProjectModel.Services
 		}
 
 		public Review GetReviewById(int id) => db.Reviews.Where(r => r.ReviewId == id).FirstOrDefault();
-		public List<Review> GetAllProductReviews(int id)
-		{
-			return (from r in db.Reviews where r.ProductId == id select r).ToList();
-		}
+		public Review GetReviewByInfo(int productId, int userId) => db.Reviews.Where(r => r.ProductId == productId && r.Customer.User.UserId == userId).FirstOrDefault();
+		public List<Review> GetAllProductReviews(int id) => (from r in db.Reviews where r.ProductId == id select r).ToList();
 	}
 }

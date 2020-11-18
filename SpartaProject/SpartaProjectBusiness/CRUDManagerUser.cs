@@ -12,8 +12,9 @@ namespace SpartaProjectBusiness
 			_service = new UserService(new ProjectContext());
 		}
 
-		public CRUDManagerUser(IService service) : base(service)
+		public CRUDManagerUser(IUserService service) : base(service)
 		{
+			_service = service;
 		}
 
 		public User Selected { get; set; }
@@ -47,5 +48,7 @@ namespace SpartaProjectBusiness
 			Selected.Password = password;
 			_service.SaveChanges();
 		}
+
+		public bool ExistsByName(string name) => _service.ExistsByName(name);
 	}
 }

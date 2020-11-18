@@ -49,13 +49,10 @@ namespace SpartaProjectGUI
 				MessageBox.Show("Price must be a numeric value");
 				return;
 			}
-			using (ProjectContext db = new ProjectContext())
+			if (CrudProduct.ExistsByName(textBox_name_value.Text))
 			{
-				if (db.Products.Any(p => p.Name == textBox_name_value.Text))
-				{
-					MessageBox.Show($"Product: {textBox_name_value.Text} already exists");
-					return;
-				} 
+				MessageBox.Show($"Product: {textBox_name_value.Text} already exists");
+				return;
 			}
 			CrudProduct.Create(textBox_name_value.Text, priceInput.Item2, textBox_URL_value.Text);
 			MessageBox.Show($"Product: {textBox_name_value.Text} created");
@@ -85,9 +82,6 @@ namespace SpartaProjectGUI
 			if (CrudProduct.Selected != null)
 			{
 				CrudProduct.Delete(CrudProduct.Selected);
-				using (ProjectContext db = new ProjectContext())
-				{
-				}
 				MessageBox.Show($"Product: {textBox_name_value.Text} deleted");
 				CrudProduct.Selected = null;
 				textBlock_productID.Text = string.Empty;

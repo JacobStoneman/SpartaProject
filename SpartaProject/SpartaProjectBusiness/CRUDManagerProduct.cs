@@ -40,5 +40,6 @@ namespace SpartaProjectBusiness
 
 		public Product GetProductById(int id) => _service.GetProductById(id);
 		public Product GetProductByName(string name) => _service.GetProductByName(name);
+		public bool ExistsByName(string name) => _service.ExistsByName(name);
 	}
 }

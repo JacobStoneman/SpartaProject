@@ -51,14 +51,11 @@ namespace SpartaProjectGUI
 
 		private void button_add_Click(object sender, RoutedEventArgs e)
 		{
-			using (ProjectContext db = new ProjectContext())
-			{
-				if (db.Users.Any(u => u.Name == textBox_name_value.Text))
+			if (CrudUser.ExistsByName(textBox_name_value.Text))
 				{
 					MessageBox.Show($"User: {textBox_name_value.Text} already exists");
 					return;
 				}
-			}
 			if (radioButton_seller.IsChecked == true)
 			{
 				CrudUser.Create(textBox_name_value.Text, textBox_password_value.Text, 0);

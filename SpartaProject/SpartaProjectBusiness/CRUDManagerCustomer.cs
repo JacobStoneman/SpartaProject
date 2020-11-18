@@ -12,8 +12,9 @@ namespace SpartaProjectBusiness
 			_service = new CustomerService(new ProjectContext());
 		}
 
-		public CRUDManagerCustomer(IService service) : base(service)
+		public CRUDManagerCustomer(ICustomerService service) : base(service)
 		{
+			_service = service;
 		}
 
 		public Customer Selected { get; set; }

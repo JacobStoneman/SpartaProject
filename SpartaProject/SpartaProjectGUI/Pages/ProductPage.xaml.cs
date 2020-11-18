@@ -22,18 +22,21 @@ namespace SpartaProjectGUI.Pages
 	/// Interaction logic for ProductPage.xaml
 	/// </summary>
 	public partial class ProductPage : Page
-	{
-		GUILogic logic = new GUILogic();
-		
+	{	
 		CRUDManagerUser CrudUser;
+		CRUDManagerSeller CrudSeller = new CRUDManagerSeller();
+		CRUDManagerCustomer CrudCustomer = new CRUDManagerCustomer();
 		CRUDManagerProduct CrudProduct = new CRUDManagerProduct();
 		CRUDManagerOrder CrudOrder = new CRUDManagerOrder();
+		CRUDManagerReview CrudReview = new CRUDManagerReview();
 
 		ProductGrid pGrid;
 
 		public ProductPage(CRUDManagerUser crudUser)
 		{
 			CrudUser = crudUser;
+			CrudCustomer.Selected = CrudCustomer.SetSelected<Customer>(CrudCustomer.GetCustomerByUserId(CrudUser.Selected.UserId));
+			CrudSeller.Selected = CrudSeller.SetSelected<Seller>(CrudSeller.GetSellerByUserId(CrudUser.Selected.UserId));
 			InitializeComponent();
 			pGrid = new ProductGrid(textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value, image_product);
 			InitialiseValues();
@@ -62,41 +65,35 @@ namespace SpartaProjectGUI.Pages
 
 		private void PopulateProductList()
 		{
-			using (ProjectContext db = new ProjectContext())
+			List<Product> allProducts = CrudProduct.RetrieveAll<Product>();
+			if (textBox_product_search.Text == string.Empty)
 			{
-				List<Product> allProducts = CrudProduct.RetrieveAll<Product>();
-				if (textBox_product_search.Text == string.Empty)
+				listBox_product.ItemsSource = allProducts;
+			}
+			else
+			{
+				List<Product> searchResults = new List<Product>();
+				foreach (Product prod in allProducts)
 				{
-					listBox_product.ItemsSource = allProducts;
-				}
-				else
-				{
-					List<Product> searchResults = new List<Product>();
-					foreach (Product prod in allProducts)
+					string nameUpper = prod.Name.ToUpper();
+					if (nameUpper.Contains(textBox_product_search.Text.ToUpper()))
 					{
-						string nameUpper = prod.Name.ToUpper();
-						if (nameUpper.Contains(textBox_product_search.Text.ToUpper()))
-						{
-							searchResults.Add(prod);
-						}
+						searchResults.Add(prod);
 					}
-					listBox_product.ItemsSource = searchResults;
 				}
+				listBox_product.ItemsSource = searchResults;
 			}
 		}
 
 		private void PopulateReviewList()
 		{
-			using (ProjectContext db = new ProjectContext())
+			if (CrudProduct.Selected != null)
 			{
-				if (CrudProduct.Selected != null)
-				{
-					List<Review> prodReviews = (from r in db.Reviews where r.ProductId == CrudProduct.Selected.ProductId select r).ToList();
-					listBox_reviews.ItemsSource = prodReviews;
-				} else
-				{
-					listBox_reviews.ItemsSource = null;
-				}
+				List<Review> prodReviews = CrudReview.GetAllProductReviews(CrudProduct.Selected.ProductId);
+				listBox_reviews.ItemsSource = prodReviews;
+			} else
+			{
+				listBox_reviews.ItemsSource = null;
 			}
 		}
 
@@ -149,11 +146,7 @@ namespace SpartaProjectGUI.Pages
 			}
 			else
 			{
-				using (ProjectContext db = new ProjectContext())
-				{
-					Customer currentCustomer = db.Customers.Where(c => c.UserId == CrudUser.Selected.UserId).FirstOrDefault();
-					CrudOrder.Create(CrudProduct.Selected, currentCustomer);
-				}
+				CrudOrder.Create(CrudProduct.Selected, CrudCustomer.Selected);
 				MessageBox.Show("Order Placed");
 				CustomEvents.current.NewOrderPlaced();
 			}
@@ -161,14 +154,10 @@ namespace SpartaProjectGUI.Pages
 
 		private void button_review_Click(object sender, RoutedEventArgs e)
 		{
-			using (ProjectContext db = new ProjectContext())
-			{
-				Review customerReview = db.Reviews.Where(r => r.ProductId == CrudProduct.Selected.ProductId && r.Customer.User.UserId == CrudUser.Selected.UserId).FirstOrDefault();
-				Customer currentCustomer = db.Customers.Where(c => c.UserId == CrudUser.Selected.UserId).FirstOrDefault();
-				ReviewConfig config = new ReviewConfig(customerReview, currentCustomer,CrudProduct.Selected);
-				config.Closed += ReviewConfigClosed;
-				config.ShowDialog();
-			}
+			Review customerReview = CrudReview.GetReviewByInfo(CrudProduct.Selected.ProductId, CrudUser.Selected.UserId);
+			ReviewConfig config = new ReviewConfig(customerReview, CrudCustomer.Selected,CrudProduct.Selected);
+			config.Closed += ReviewConfigClosed;
+			config.ShowDialog();
 		}
 
 		private void ReviewConfigClosed(object sender, EventArgs e)
