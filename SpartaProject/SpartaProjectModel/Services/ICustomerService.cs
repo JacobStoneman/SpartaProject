@@ -2,7 +2,7 @@
 
 namespace SpartaProjectModel.Services
 {
-	public interface ICustomerService : IService
+	public interface ICustomerService : IUserService
 	{
 		public Customer GetCustomerById(int id);
 	}

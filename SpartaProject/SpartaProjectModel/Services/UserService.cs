@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace SpartaProjectModel.Services
 {
-	public class UserService : Service,IUserService
+	public class UserService : Service, IUserService
 	{
 		public UserService(ProjectContext context) : base(context)
 		{

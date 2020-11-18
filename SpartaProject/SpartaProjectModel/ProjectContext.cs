@@ -60,13 +60,9 @@ namespace SpartaProjectDB
 
         public float GetAverageRating()
         {
-            List<Review> allReviews = new List<Review>();
+            ReviewService reviewService = new ReviewService(new ProjectContext());
+            List<Review> allReviews = reviewService.GetAllProductReviews(ProductId);
             float avRating = 0;
-
-            using (ProjectContext db = new ProjectContext())
-            {
-                allReviews = (from r in db.Reviews where r.ProductId == ProductId select r).ToList();
-            }
 
             if (allReviews.Count == 0)
             {
@@ -115,12 +111,9 @@ namespace SpartaProjectDB
 
         public override string ToString()
         {
-            ProjectContext db = new ProjectContext();
-            CustomerService customerService = new CustomerService(db);
-            UserService userService = new UserService(db);
-
+            CustomerService customerService = new CustomerService(new ProjectContext());
             Customer customer = customerService.GetCustomerById(CustomerId);
-            User user = userService.GetUserById(customer.UserId);
+            User user = customerService.GetUserById(customer.UserId);
             return $"{user}: {Comment} - {Rating}/5";
         }
     }
