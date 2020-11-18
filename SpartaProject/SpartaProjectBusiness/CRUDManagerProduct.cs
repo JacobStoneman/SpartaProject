@@ -11,8 +11,9 @@ namespace SpartaProjectBusiness
 			_service = new ProductService(new ProjectContext());
 		}
 
-		public CRUDManagerProduct(IService service) : base(service)
+		public CRUDManagerProduct(IProductService service) : base(service)
 		{
+			_service = service;
 		}
 
 		public Product Selected { get; set; }
@@ -37,9 +38,7 @@ namespace SpartaProjectBusiness
 			_service.SaveChanges();
 		}
 
-		public Product GetProductById(int id)
-		{
-			return _service.GetProductById(id);
-		}
+		public Product GetProductById(int id) => _service.GetProductById(id);
+		public Product GetProductByName(string name) => _service.GetProductByName(name);
 	}
 }

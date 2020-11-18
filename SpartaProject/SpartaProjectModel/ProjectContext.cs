@@ -15,6 +15,7 @@ namespace SpartaProjectDB
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<Review> Reviews { get; set; }
+
 		public ProjectContext()
 		{ }
 
@@ -22,8 +23,13 @@ namespace SpartaProjectDB
         { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=SpartaProject;");
-    }
+        {
+            if (!options.IsConfigured)
+            {
+                options.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB; Initial Catalog=SpartaProject;");
+            }
+        }
+	}
 
     public class User
     {

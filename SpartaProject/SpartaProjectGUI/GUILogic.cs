@@ -7,7 +7,7 @@ using SpartaProjectDB;
 
 namespace SpartaProjectGUI
 {
-	//TODO: Move to business layer
+	//TODO: Move to backend
 	public class GUILogic
 	{
 		public (bool, decimal) CheckDecimalInput(string input)

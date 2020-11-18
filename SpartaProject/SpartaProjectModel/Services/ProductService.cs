@@ -10,5 +10,6 @@ namespace SpartaProjectModel.Services
 		}
 
 		public Product GetProductById(int id) => db.Products.Where(p => p.ProductId == id).FirstOrDefault();
+		public Product GetProductByName(string name) => db.Products.Where(p => p.Name == name).FirstOrDefault();
 	}
 }

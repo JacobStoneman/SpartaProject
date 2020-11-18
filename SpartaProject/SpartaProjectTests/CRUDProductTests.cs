@@ -10,7 +10,7 @@ namespace SpartaProjectTests
 	public class CRUDProductTests
 	{
 		CRUDManagerProduct _crud;
-		ProductService productService;
+		IProductService productService;
 
 		[OneTimeSetUp]
 		public void OneTimeSetUp()
@@ -24,64 +24,20 @@ namespace SpartaProjectTests
 			_crud.Create("test", 5, "testURL");
 		}
 
-		[SetUp]
-		public void Setup()
+		[Test]
+		public void WhenANewProductIsCreated_ItIsAddedToTheDatabaseAndItsDetailsAreCorrect()
 		{
-			using (var db = new ProjectContext())
-			{
-				var selectedProducts =
-					from p in db.Products
-					where p.Name == "testProduct"
-					select p;
+			_crud.Create("newTest", 10, "testURL");
 
-				db.Products.RemoveRange(selectedProducts);
+			Product newProduct = _crud.GetProductByName("newTest");
 
-				db.SaveChanges();
-			}
-		}
-
-		[TearDown]
-		public void TearDown()
-		{
-			using (var db = new ProjectContext())
-			{
-				var selectedProducts =
-					from p in db.Products
-					where p.Name == "testProduct"
-					select p;
-
-				db.Products.RemoveRange(selectedProducts);
-
-				db.SaveChanges();
-			}
+			Assert.That(newProduct.Name, Is.EqualTo("newTest"));
+			Assert.That(newProduct.Price, Is.EqualTo(10));
+			Assert.That(newProduct.Url, Is.EqualTo("testURL"));
 		}
 
 		[Test]
-		public void WhenANewProductIsAdded_TheNumberOfProductsIncreasesBy1()
-		{
-			using (var db = new ProjectContext())
-			{
-				int originalNum = db.Products.Count();
-				_crud.Create("testProduct", 1, "url");
-
-				Assert.AreEqual(originalNum + 1, db.Products.Count());
-			}
-		}
-
-		[Test]
-		public void WhenANewProductIsAdded_ItsDetailsAreCorrect()
-		{
-			using (var db = new ProjectContext())
-			{
-				_crud.Create("testProduct", 1, "url");
-				Product newProductSelected = db.Products.Where(p => p.Name == "testProduct").FirstOrDefault();
-				Assert.AreEqual("testProduct", newProductSelected.Name);
-				Assert.AreEqual(1, newProductSelected.Price);
-				Assert.AreEqual("url", newProductSelected.Url);
-			}
-		}
-
-		[Test]
+		[Ignore ("Uses old db")]
 		public void WhenProductsValuesAreChanged_TheDatabaseIsUpdated()
 		{
 			using (var db = new ProjectContext())
@@ -114,6 +70,19 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		public void WhenAProductIsRemoved_ItIsRemovedFromTheDatabase()
+		{
+			_crud.Create("newTest", 10, "testURL");
+
+			Product newProduct = _crud.GetProductByName("newTest");
+
+			_crud.Delete(newProduct);
+
+			Assert.That(_crud.GetProductByName("newTest"), Is.Null);
+		}
+
+		[Test]
+		[Ignore("Uses old db")]
 		public void WhenAProductIsRemoved_ItIsNoLongerInTheDatabase()
 		{
 			using (var db = new ProjectContext())

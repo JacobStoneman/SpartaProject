@@ -29,7 +29,7 @@ namespace SpartaProjectBusiness
 			return _service.RetrieveAll<T>();
 		}
 
-		public void Delete<T>(T obj) where T : class
+		public virtual void Delete<T>(T obj) where T : class
 		{
 			_service.Delete(obj);
 		}
