@@ -25,6 +25,7 @@ namespace SpartaProjectGUI.Pages
 	{
 		CRUDManagerOrder CrudOrder = new CRUDManagerOrder();
 		CRUDManagerProduct CrudProduct = new CRUDManagerProduct();
+		CRUDManagerCustomer CrudCustomer = new CRUDManagerCustomer();
 		CRUDManagerUser CrudUser;
 
 		ProductGrid pGrid;
@@ -32,6 +33,7 @@ namespace SpartaProjectGUI.Pages
 		public CustomerOrderPage(CRUDManagerUser crudUser)
 		{
 			CrudUser = crudUser;
+			CrudCustomer.Selected = CrudCustomer.SetSelected<Customer>(CrudCustomer.GetCustomerByUserId(CrudUser.Selected.UserId));
 			InitializeComponent();
 			pGrid = new ProductGrid(textBlock_product_id_value, textBlock_product_name_value, textBlock_product_price_value, textBlock_product_rating_value,image_product);
 			PopulateOrderList();
@@ -40,26 +42,26 @@ namespace SpartaProjectGUI.Pages
 
 		private void PopulateOrderList()
 		{
+			List<Order> customerOrders = new List<Order>();
 			using (ProjectContext db = new ProjectContext())
 			{
-				Customer currentCustomer = db.Customers.Where(c => c.UserId == CrudUser.Selected.UserId).FirstOrDefault();
-				List<Order> customerOrders = db.Orders.Where(o => o.CustomerId == currentCustomer.CustomerId).ToList();
-				List<OrderItem> listItems = new List<OrderItem>();
-
-				foreach(Order o in customerOrders)
-				{
-					if (o.Shipped)
-					{
-						BitmapImage newImage = new BitmapImage(new Uri(@"\Images\shipped.png", UriKind.Relative));
-						listItems.Add(new OrderItem() {Order = o, OrderDetails = o.ToString(), OrderStatus = newImage });
-					} else
-					{
-						listItems.Add(new OrderItem() {Order = o, OrderDetails = o.ToString(), OrderStatus = null });
-					}
-				}
-
-				listBox_myOrders.ItemsSource = listItems;
+				customerOrders = db.Orders.Where(o => o.CustomerId == CrudCustomer.Selected.CustomerId).ToList();
 			}
+			List<OrderItem> listItems = new List<OrderItem>();
+
+			foreach(Order o in customerOrders)
+			{
+				if (o.Shipped)
+				{
+					BitmapImage newImage = new BitmapImage(new Uri(@"\Images\shipped.png", UriKind.Relative));
+					listItems.Add(new OrderItem() {Order = o, OrderDetails = o.ToString(), OrderStatus = newImage });
+				} else
+				{
+					listItems.Add(new OrderItem() {Order = o, OrderDetails = o.ToString(), OrderStatus = null });
+				}
+			}
+
+			listBox_myOrders.ItemsSource = listItems;
 		}
 
 		private void SetSelectedProductGrid()

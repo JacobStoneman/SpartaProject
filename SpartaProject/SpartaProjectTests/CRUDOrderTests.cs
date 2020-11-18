@@ -2,12 +2,22 @@
 using SpartaProjectBusiness;
 using SpartaProjectDB;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace SpartaProjectTests
 {
 	public class CRUDOrderTests
 	{
 		CRUDManagerOrder _crud = new CRUDManagerOrder();
+
+		//[OneTimeSetUp]
+		//public void OneTimeSetUp()
+		//{
+		//	DbContextOptions options = new DbContextOptionsBuilder<ProjectContext>()
+		//		.UseInMemoryDatabase(databaseName: "Test_DB")
+		//		.Options;
+		//	var context = new ProjectContext(options);
+		//}
 
 		[SetUp]
 		public void Setup()

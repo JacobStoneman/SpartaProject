@@ -1,7 +1,6 @@
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\obj\Debug\netcoreapp3.1\SpartaProjectTests.csprojAssemblyReference.cache
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\obj\Debug\netcoreapp3.1\SpartaProjectTests.AssemblyInfoInputs.cache
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\obj\Debug\netcoreapp3.1\SpartaProjectTests.AssemblyInfo.cs
-C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\obj\Debug\netcoreapp3.1\SpartaProjectTests.csproj.CoreCompileInputs.cache
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\SpartaProjectBusiness.exe
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\SpartaProjectGUI.exe
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\SpartaProjectModel.exe
@@ -14,8 +13,6 @@ C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\SpartaProjectTests.runtimeconfig.dev.json
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\SpartaProjectTests.dll
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\SpartaProjectTests.pdb
-C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.CodeCoverage.Shim.dll
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\Microsoft.DotNet.InternalAbstractions.dll
@@ -25,9 +22,6 @@ C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
-C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
-C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
@@ -138,3 +132,5 @@ C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\obj\
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\obj\Debug\netcoreapp3.1\SpartaProjectTests.dll
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\obj\Debug\netcoreapp3.1\SpartaProjectTests.pdb
 C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\obj\Debug\netcoreapp3.1\SpartaProjectTests.genruntimeconfig.cache
+C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.InMemory.dll
+C:\Users\Jacob\Documents\Files\WPF\Project\SpartaProject\SpartaProjectTests\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll

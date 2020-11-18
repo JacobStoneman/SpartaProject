@@ -10,5 +10,6 @@ namespace SpartaProjectModel.Services
 		}
 
 		public Customer GetCustomerById(int id) => db.Customers.Where(c => c.CustomerId == id).FirstOrDefault();
+		public Customer GetCustomerByUserId(int id) => db.Customers.Where(c => c.UserId == id).FirstOrDefault();
 	}
 }

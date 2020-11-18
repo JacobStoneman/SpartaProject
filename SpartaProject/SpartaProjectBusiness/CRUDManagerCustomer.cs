@@ -29,5 +29,8 @@ namespace SpartaProjectBusiness
 
 			return newCustomer;
 		}
+
+		public Customer GetCustomerById(int id) => _service.GetCustomerById(id);
+		public Customer GetCustomerByUserId(int id) => _service.GetCustomerByUserId(id);
 	}
 }

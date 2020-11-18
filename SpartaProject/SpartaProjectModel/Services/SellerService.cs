@@ -11,5 +11,6 @@ namespace SpartaProjectModel.Services
 		}
 
 		public Seller GetSellerById(int id) => db.Sellers.Where(s => s.SellerId == id).FirstOrDefault();
+		public Seller GetSellerByUserId(int id) => db.Sellers.Where(s => s.UserId == id).FirstOrDefault();
 	}
 }

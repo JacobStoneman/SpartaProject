@@ -2,12 +2,27 @@
 using SpartaProjectBusiness;
 using SpartaProjectDB;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using SpartaProjectModel.Services;
 
 namespace SpartaProjectTests
 {
 	public class CRUDProductTests
 	{
-		CRUDManagerProduct _crud = new CRUDManagerProduct();
+		CRUDManagerProduct _crud;
+		ProductService productService;
+
+		[OneTimeSetUp]
+		public void OneTimeSetUp()
+		{
+			var options = new DbContextOptionsBuilder<ProjectContext>()
+				.UseInMemoryDatabase(databaseName: "Test_DB")
+				.Options;
+			var context = new ProjectContext(options);
+			productService = new ProductService(context);
+			_crud = new CRUDManagerProduct(productService);
+			_crud.Create("test", 5, "testURL");
+		}
 
 		[SetUp]
 		public void Setup()
