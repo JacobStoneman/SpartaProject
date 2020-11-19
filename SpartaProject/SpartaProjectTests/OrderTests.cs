@@ -1,56 +1,46 @@
 ﻿using NUnit.Framework;
 using SpartaProjectBusiness;
 using SpartaProjectDB;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using SpartaProjectModel.Services;
+using System.Linq;
+using Moq;
+using System.Collections.Generic;
 
 namespace SpartaProjectTests
 {
-	public class CRUDOrderTests
+	public class OrderTests
 	{
-		CRUDManagerOrder _crud = new CRUDManagerOrder();
+		CRUDManagerOrder _crud;
+		IOrderService orderService;
+		Product testProduct;
+		Customer testCustomer;
 
-		//[OneTimeSetUp]
-		//public void OneTimeSetUp()
-		//{
-		//	DbContextOptions options = new DbContextOptionsBuilder<ProjectContext>()
-		//		.UseInMemoryDatabase(databaseName: "Test_DB")
-		//		.Options;
-		//	var context = new ProjectContext(options);
-		//}
-
-		[SetUp]
-		public void Setup()
+		[OneTimeSetUp]
+		public void OneTimeSetUp()
 		{
-			using (var db = new ProjectContext())
-			{
-				var selectedOrders =
-					from o in db.Orders
-					where o.CustomerId == db.Customers.FirstOrDefault().CustomerId
-					select o;
+			DbContextOptions<ProjectContext> options = new DbContextOptionsBuilder<ProjectContext>()
+				.UseInMemoryDatabase(databaseName: "Test_DB")
+				.Options;
+			ProjectContext context = new ProjectContext(options);
+			orderService = new OrderService(context);
+			_crud = new CRUDManagerOrder(orderService);
 
-				db.Orders.RemoveRange(selectedOrders);
-
-				db.SaveChanges();
-			}
+			testProduct = new Product() { ProductId = 1, Name = "testProduct", Price = 5, Url = "testUrl" };
+			testCustomer = new Customer() { CustomerId = 1, UserId = 1 };
 		}
 
-		[TearDown]
-		public void TearDown()
+		[Test]
+		[Category("CRUD")]
+		public void WhenANewOrderIsCreated_ItIsAddedToTheDatabase()
 		{
-			using (var db = new ProjectContext())
-			{
-				var selectedOrders =
-					from o in db.Orders
-					where o.CustomerId == db.Customers.FirstOrDefault().CustomerId
-					select o;
+			int originalNum = _crud.RetrieveAll<Order>().Count;
+			Order newOrder = _crud.Create(testProduct,testCustomer);
+			
+			Assert.That(originalNum + 1, Is.EqualTo(_crud.RetrieveAll<Order>().Count));
 
-				db.Orders.RemoveRange(selectedOrders);
-
-				db.SaveChanges();
-			}
+			_crud.Delete(newOrder);
 		}
-
 
 		[Test]
 		[Ignore("Using old db implementation")]

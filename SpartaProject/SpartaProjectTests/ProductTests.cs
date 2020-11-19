@@ -1,7 +1,6 @@
 ﻿using NUnit.Framework;
 using SpartaProjectBusiness;
 using SpartaProjectDB;
-using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using SpartaProjectModel.Services;
 using Moq;
@@ -9,7 +8,7 @@ using System.Collections.Generic;
 
 namespace SpartaProjectTests
 {
-	public class CRUDProductTests
+	public class ProductTests
 	{
 		CRUDManagerProduct _crud;
 		IProductService productService;
@@ -17,16 +16,17 @@ namespace SpartaProjectTests
 		[OneTimeSetUp]
 		public void OneTimeSetUp()
 		{
-			var options = new DbContextOptionsBuilder<ProjectContext>()
+			DbContextOptions<ProjectContext> options = new DbContextOptionsBuilder<ProjectContext>()
 				.UseInMemoryDatabase(databaseName: "Test_DB")
 				.Options;
-			var context = new ProjectContext(options);
+			ProjectContext context = new ProjectContext(options);
 			productService = new ProductService(context);
 			_crud = new CRUDManagerProduct(productService);
 			_crud.Create("test", 5, "testURL");
 		}
 
 		[Test]
+		[Category("CRUD")]
 		public void WhenANewProductIsCreated_ItIsAddedToTheDatabase()
 		{
 			int originalNum = _crud.RetrieveAll<Product>().Count;
@@ -38,6 +38,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		[Category("CRUD")]
 		public void WhenANewProductIsCreated_ItsDetailsAreCorrect()
 		{
 			_crud.Create("newTest", 10, "testURL");
@@ -52,6 +53,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		[Category("CRUD")]
 		public void WhenProductValuesAreChanged_TheDatabaseIsUpdated()
 		{
 			_crud.Create("change", 5, "changeURL");
@@ -71,6 +73,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		[Category("CRUD")]
 		public void WhenAProductIsRemoved_ItIsRemovedFromTheDatabase()
 		{
 			_crud.Create("newTest", 10, "testURL");
@@ -83,6 +86,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		[Category("Class")]
 		public void BeAbleToBeConstructedUsingMoq()
 		{
 			var mockReview = new Mock<IReviewService>();
@@ -91,6 +95,7 @@ namespace SpartaProjectTests
 		}
 
 		[Test]
+		[Category("Class")]
 		public void ProductGetsAverageRating()
 		{
 			var mockReview = new Mock<IReviewService>();
