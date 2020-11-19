@@ -4,6 +4,8 @@ using SpartaProjectDB;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using SpartaProjectModel.Services;
+using Moq;
+using System.Collections.Generic;
 
 namespace SpartaProjectTests
 {
@@ -78,6 +80,31 @@ namespace SpartaProjectTests
 			_crud.Delete(newProduct);
 
 			Assert.That(_crud.GetProductByName("newTest"), Is.Null);
+		}
+
+		[Test]
+		public void BeAbleToBeConstructedUsingMoq()
+		{
+			var mockReview = new Mock<IReviewService>();
+			Product test = new Product(mockReview.Object);
+			Assert.That(test, Is.InstanceOf<Product>());
+		}
+
+		[Test]
+		public void ProductGetsAverageRating()
+		{
+			var mockReview = new Mock<IReviewService>();
+
+			List<Review> fakeReviews = new List<Review>()
+			{
+				new Review() { Rating = 5 },
+				new Review() { Rating = 1 }
+			};
+
+			mockReview.Setup(x => x.GetAllProductReviews(1)).Returns(fakeReviews);
+			Product test = new Product(mockReview.Object);
+			test.ProductId = 1;
+			Assert.That(test.GetAverageRating(), Is.EqualTo(3));
 		}
 	}
 }

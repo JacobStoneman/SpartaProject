@@ -23,7 +23,7 @@ namespace SpartaProjectGUI
 		Customer Reviewer;
 		Product Product;
 		CRUDManagerReview CrudReview = new CRUDManagerReview();
-		GUILogic logic = new GUILogic();
+		InputValidator validator = new InputValidator();
 		public ReviewConfig(Review selected, Customer customer, Product product)
 		{
 			Selected = selected;
@@ -54,7 +54,7 @@ namespace SpartaProjectGUI
 
 		private void Button_add_Click(object sender, RoutedEventArgs e)
 		{
-			(bool, int) ratingInput = logic.CheckIntInput(textBox_rating_value.Text);
+			(bool, int) ratingInput = validator.CheckIntInput(textBox_rating_value.Text);
 
 			if (!ratingInput.Item1)
 			{
@@ -74,7 +74,7 @@ namespace SpartaProjectGUI
 
 		private void button_update_Click(object sender, RoutedEventArgs e)
 		{
-			(bool, int) ratingInput = logic.CheckIntInput(textBox_rating_value.Text);
+			(bool, int) ratingInput = validator.CheckIntInput(textBox_rating_value.Text);
 
 			if (!ratingInput.Item1)
 			{

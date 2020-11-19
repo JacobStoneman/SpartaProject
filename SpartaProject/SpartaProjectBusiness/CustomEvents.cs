@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace SpartaProjectGUI
+
+namespace SpartaProjectBusiness
 {
 	public class CustomEvents
 	{
-		//TODO: Move to backend
 		public static CustomEvents current = new CustomEvents();
 
 		public event Action OnNewOrderPlaced;

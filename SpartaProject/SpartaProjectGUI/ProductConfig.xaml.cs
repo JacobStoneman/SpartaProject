@@ -20,7 +20,8 @@ namespace SpartaProjectGUI
 	/// </summary>
 	public partial class ProductConfig : Window
 	{
-		GUILogic logic = new GUILogic();
+		InputValidator validator = new InputValidator();
+
 		CRUDManagerProduct CrudProduct;
 		public ProductConfig(CRUDManagerProduct crudProduct)
 		{
@@ -42,7 +43,7 @@ namespace SpartaProjectGUI
 
 		private void button_add_Click(object sender, RoutedEventArgs e)
 		{
-			(bool, decimal) priceInput = logic.CheckDecimalInput(textBox_price_value.Text);
+			(bool, decimal) priceInput = validator.CheckDecimalInput(textBox_price_value.Text);
 
 			if (!priceInput.Item1)
 			{
@@ -62,7 +63,7 @@ namespace SpartaProjectGUI
 		{
 			if (CrudProduct.Selected != null)
 			{
-				(bool, decimal) priceInput = logic.CheckDecimalInput(textBox_price_value.Text);
+				(bool, decimal) priceInput = validator.CheckDecimalInput(textBox_price_value.Text);
 
 				if (!priceInput.Item1)
 				{

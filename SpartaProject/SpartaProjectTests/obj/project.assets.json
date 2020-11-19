@@ -2011,22 +2011,6 @@
           "bin/placeholder/SpartaProjectBusiness.dll": {}
         }
       },
-      "SpartaProjectGUI/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v3.1",
-        "dependencies": {
-          "SpartaProjectBusiness": "1.0.0"
-        },
-        "compile": {
-          "bin/placeholder/SpartaProjectGUI.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/SpartaProjectGUI.dll": {}
-        },
-        "frameworkReferences": [
-          "Microsoft.WindowsDesktop.App.WPF"
-        ]
-      },
       "SpartaProjectModel/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -7185,11 +7169,6 @@
       "path": "../SpartaProjectBusiness/SpartaProjectBusiness.csproj",
       "msbuildProject": "../SpartaProjectBusiness/SpartaProjectBusiness.csproj"
     },
-    "SpartaProjectGUI/1.0.0": {
-      "type": "project",
-      "path": "../SpartaProjectGUI/SpartaProjectGUI.csproj",
-      "msbuildProject": "../SpartaProjectGUI/SpartaProjectGUI.csproj"
-    },
     "SpartaProjectModel/1.0.0": {
       "type": "project",
       "path": "../SpartaProjectModel/SpartaProjectModel.csproj",
@@ -7204,7 +7183,6 @@
       "NUnit >= 3.12.0",
       "NUnit3TestAdapter >= 3.16.1",
       "SpartaProjectBusiness >= 1.0.0",
-      "SpartaProjectGUI >= 1.0.0",
       "SpartaProjectModel >= 1.0.0"
     ]
   },
@@ -7236,9 +7214,6 @@
           "projectReferences": {
             "C:\\Users\\Jacob\\Documents\\Files\\WPF\\Project\\SpartaProject\\SpartaProjectBusiness\\SpartaProjectBusiness.csproj": {
               "projectPath": "C:\\Users\\Jacob\\Documents\\Files\\WPF\\Project\\SpartaProject\\SpartaProjectBusiness\\SpartaProjectBusiness.csproj"
-            },
-            "C:\\Users\\Jacob\\Documents\\Files\\WPF\\Project\\SpartaProject\\SpartaProjectGUI\\SpartaProjectGUI.csproj": {
-              "projectPath": "C:\\Users\\Jacob\\Documents\\Files\\WPF\\Project\\SpartaProject\\SpartaProjectGUI\\SpartaProjectGUI.csproj"
             },
             "C:\\Users\\Jacob\\Documents\\Files\\WPF\\Project\\SpartaProject\\SpartaProjectModel\\SpartaProjectModel.csproj": {
               "projectPath": "C:\\Users\\Jacob\\Documents\\Files\\WPF\\Project\\SpartaProject\\SpartaProjectModel\\SpartaProjectModel.csproj"
@@ -7289,9 +7264,6 @@
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
-          },
-          "Microsoft.WindowsDesktop.App.WPF": {
-            "privateAssets": "none"
           }
         },
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"

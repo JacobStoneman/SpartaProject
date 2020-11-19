@@ -16,7 +16,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SpartaProjectBusiness\SpartaProjectBusiness.csproj" />
-    <ProjectReference Include="..\SpartaProjectGUI\SpartaProjectGUI.csproj" />
     <ProjectReference Include="..\SpartaProjectModel\SpartaProjectModel.csproj" />
   </ItemGroup>
 

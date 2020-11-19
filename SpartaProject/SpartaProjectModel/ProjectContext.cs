@@ -68,10 +68,21 @@ namespace SpartaProjectDB
         public List<Review> Reviews { get; } = new List<Review>();
 
         public override string ToString() => Name;
+        
+        IReviewService reviewService;
+
+		public Product()
+		{
+            reviewService = new ReviewService(new ProjectContext());
+		}
+
+        public Product(IReviewService review)
+		{
+            reviewService = review;
+		}
 
         public float GetAverageRating()
         {
-            ReviewService reviewService = new ReviewService(new ProjectContext());
             List<Review> allReviews = reviewService.GetAllProductReviews(ProductId);
             float avRating = 0;
 
