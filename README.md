@@ -21,7 +21,7 @@ The goal of this project is to create an application in which users can either b
 - [x] Unit tests for CRUD operations
 
 #### Project Board 
-
+![Sprint 1 Snapshot](Snapshots/Sprint1Snapshot.PNG)
 
 #### User Stories Completed
 * Product Browsing
